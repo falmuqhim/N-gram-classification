@@ -1,4 +1,8 @@
 # N-gram-classification
+Fahad Almuquhim (CS, co devloper, Junite Testing, pipe line optmiztion, GUI )
+)
+Bader Alharbi (Computional biology, Co-devloper,data anlysis, pipe line optmiztion)
+
 
 N-gram-classification
 This project is to reduce the given sequences of amino acid. It takes the clusters, and the letters along with the sequence file, and the desired output directory. Then, it parses the given clusters' file to assign a letter for each cluster, and generate N-gram combinations for further mathematical computations. After that, the N-gram algorithm is used to estimate the probability from relative frequency counts. 
