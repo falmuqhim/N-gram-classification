@@ -1,6 +1,6 @@
 # N-gram-classification
-Fahad Almuquhim, co-devloper 
-College of Infromation, Department of Computer scince, Imam Muhammad ibn Saud Islamic University in Riyadh, Saudi Arabia
+Fahad Almuqhim, Lecturer
+College of Computer and Information Sciences, the Department of Computer Science, Al Imam Mohammad Ibn Saud Islamic University in Riyadh, Saudi Arabia
 
 Bader Alharbi, co-devloper 
 -Department of Biostatistics and Bioinformatics, King Abdullah International Medical Research Center/King Saud bin Abdulaziz University for Health Sciences, Riyadh, KSA.
