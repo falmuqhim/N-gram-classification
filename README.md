@@ -1,7 +1,11 @@
 # N-gram-classification
-Fahad Almuquhim (CS, co devloper, Junite Testing, pipe line optmiztion, GUI )
-)
-Bader Alharbi (Computional biology, Co-devloper,data anlysis, pipe line optmiztion)
+Fahad Almuquhim, co-devloper 
+College of Infromation, Department of Computer scince, Imam Muhammad ibn Saud Islamic University in Riyadh, Saudi Arabia
+
+Bader Alharbi, co-devloper 
+-Department of Biostatistics and Bioinformatics, King Abdullah International Medical Research Center/King Saud bin Abdulaziz University for Health Sciences, Riyadh, KSA.
+-School of Systems Biology, George Mason University,10900 University Blvd Manassas, VA 20110
+
 
 
 N-gram-classification
