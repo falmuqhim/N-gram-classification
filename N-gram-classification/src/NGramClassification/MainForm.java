@@ -27,8 +27,7 @@ import javax.swing.text.DocumentFilter;
  */
 public class MainForm extends javax.swing.JFrame {
 
-    JFileChooser fileChooser;
-    JFileChooser directoryChooser;
+    JFileChooser fileChooser;    
     File reductionFile;
     File positiveFile;
     File negativeFile;
@@ -67,8 +66,6 @@ public class MainForm extends javax.swing.JFrame {
         directory = null;
 
         fileChooser = new JFileChooser();
-        directoryChooser = new JFileChooser();
-        directoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
         fileChooser.addChoosableFileFilter(new Filter());
         fileChooser.setAcceptAllFileFilterUsed(false);
@@ -249,7 +246,7 @@ public class MainForm extends javax.swing.JFrame {
         allowedLetters.setText("BJUXZO");
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 10)); // NOI18N
-        jLabel5.setText("<html>These letters will be used to reduce the protein letters</html>");
+        jLabel5.setText("<html>These letters will be used to reduce the amino acids</html>");
 
         jLabel6.setText("Allowed Letters");
 
@@ -437,7 +434,7 @@ public class MainForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(runBTN)
@@ -498,12 +495,15 @@ public class MainForm extends javax.swing.JFrame {
             }
         }
         if (evt.getSource() == directoryBTN) {
-            int returnVal = directoryChooser.showDialog(this, "Select");
+            JFileChooser chooser = new JFileChooser();
+            chooser.setMultiSelectionEnabled(false);
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            
+            int returnVal = chooser.showOpenDialog(null);
+            
             if (returnVal == JFileChooser.APPROVE_OPTION) {
-                directory = directoryChooser.getSelectedFile();
-                directoryTF.setText(directory.getAbsolutePath());
-            } else {
-                System.out.println("closed by user");
+                directory = chooser.getSelectedFile();
+                directoryTF.setText(directory.getPath());
             }
         }
     }//GEN-LAST:event_actionPerformed
@@ -585,9 +585,9 @@ public class MainForm extends javax.swing.JFrame {
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this,
-                "This application is developed to reduce the protein and calcaulte NGram frequency. "
+                "This application is developed to reduce the amino acid sequences and calcaulte NGram frequency. "
                 + "\nIt allows you to customize the parameters which include allowed characters "
-                + "\nto be used to reduce the protein and the value of N that is used to generate "
+                + "\nto be used to reduce the amino acid and the value of N that is used to generate "
                 + "\nthe grams and calculate the frequency. The application will first parse the "
                 + "\ncluster's file. If the number of clusters is greater than the allowed characters, "
                 + "\nthe gram will be represented using two-letters to maximize the available letters.",

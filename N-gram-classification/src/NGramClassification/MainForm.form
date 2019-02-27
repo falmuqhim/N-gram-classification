@@ -107,7 +107,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jPanel3" min="-2" pref="246" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jPanel4" max="32767" attributes="0"/>
                   </Group>
@@ -416,7 +416,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Lucida Grande" size="10" style="0"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt;These letters will be used to reduce the protein letters&lt;/html&gt;"/>
+                <Property name="text" type="java.lang.String" value="&lt;html&gt;These letters will be used to reduce the amino acids&lt;/html&gt;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
