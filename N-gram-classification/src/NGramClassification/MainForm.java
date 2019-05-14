@@ -33,6 +33,14 @@ public class MainForm extends javax.swing.JFrame {
     File negativeFile;
     File directory;
     Integer progress = 0;
+    JFileChooser DSfileChooser;
+    JFileChooser directoryChooser;
+    File sequenceFile;
+    File sequenceFile1;
+    File DSdirectory;
+    File DSdirectory1;
+    JFileChooser chooser = new JFileChooser();
+    JFileChooser DSchooser = new JFileChooser();
 
     /**
      * Creates new form MainForm
@@ -73,6 +81,17 @@ public class MainForm extends javax.swing.JFrame {
         //add filter to accept only uppercase letters in allowed letters feild
         DocumentFilter filter = new UppercaseDocumentFilter();
         ((AbstractDocument) allowedLetters.getDocument()).setDocumentFilter(filter);
+        sequenceFile = null;
+        DSdirectory = null;
+        sequenceFile1 = null;
+        DSdirectory1 = null;
+
+        DSfileChooser = new JFileChooser();
+        directoryChooser = new JFileChooser();
+        directoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+        DSfileChooser.addChoosableFileFilter(new Filter());
+        DSfileChooser.setAcceptAllFileFilterUsed(false);
     }
 
     /**
@@ -84,17 +103,20 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jPanel6 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         positiveFileTF = new javax.swing.JTextField();
         reductionFileBTN = new javax.swing.JButton();
         positiveFileBTN = new javax.swing.JButton();
         negaiveFileBTN = new javax.swing.JButton();
-        negativeFileTF = new javax.swing.JTextField();
         reductionFileTF = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        positiveFileTF1 = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         directoryTF = new javax.swing.JTextField();
         directoryBTN = new javax.swing.JButton();
@@ -120,6 +142,27 @@ public class MainForm extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         runBTN = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        sequenceFileTF = new javax.swing.JTextField();
+        outputDirectoryTF = new javax.swing.JTextField();
+        sequenceBTN = new javax.swing.JButton();
+        outputBTN = new javax.swing.JButton();
+        runBTN1 = new javax.swing.JButton();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        sequenceFileTF1 = new javax.swing.JTextField();
+        outputDirectoryTF1 = new javax.swing.JTextField();
+        sequenceBTN1 = new javax.swing.JButton();
+        outputBTN1 = new javax.swing.JButton();
+        runBTN2 = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        startTF = new javax.swing.JTextField();
+        endTF = new javax.swing.JTextField();
+        jLabel13 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -155,8 +198,6 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        negativeFileTF.setEnabled(false);
-
         reductionFileTF.setEnabled(false);
 
         jLabel2.setText("Clusters file");
@@ -164,6 +205,8 @@ public class MainForm extends javax.swing.JFrame {
         jLabel3.setText("Positive File");
 
         jLabel4.setText("Negative File");
+
+        positiveFileTF1.setEnabled(false);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -182,7 +225,7 @@ public class MainForm extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(positiveFileBTN))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(negativeFileTF, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(positiveFileTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(negaiveFileBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -205,9 +248,9 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(negativeFileTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(negaiveFileBTN)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(positiveFileTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -412,7 +455,7 @@ public class MainForm extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap(18, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
@@ -420,7 +463,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(runBTN)
-                .addGap(340, 340, 340))
+                .addGap(339, 339, 339))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -441,6 +484,211 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("NGram Classification", jPanel6);
+
+        jPanel8.setBackground(new java.awt.Color(245, 245, 245));
+
+        jPanel9.setBorder(javax.swing.BorderFactory.createTitledBorder("Remove Duplicate"));
+
+        jLabel8.setText("Sequence File");
+
+        jLabel9.setText("Output Directory");
+
+        sequenceFileTF.setEnabled(false);
+
+        outputDirectoryTF.setEnabled(false);
+
+        sequenceBTN.setText("Choose ...");
+        sequenceBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sequenceBTNactionPerformed(evt);
+            }
+        });
+
+        outputBTN.setText("Select ...");
+        outputBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outputBTNactionPerformed(evt);
+            }
+        });
+
+        runBTN1.setText("Run");
+        runBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runBTN1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sequenceFileTF, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
+                    .addComponent(outputDirectoryTF))
+                .addGap(29, 29, 29)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(outputBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sequenceBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(runBTN1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(sequenceFileTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sequenceBTN))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(outputDirectoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outputBTN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(runBTN1)
+                .addContainerGap(8, Short.MAX_VALUE))
+        );
+
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Remove By Range"));
+
+        jLabel10.setText("Sequence File");
+
+        jLabel11.setText("Output Directory");
+
+        sequenceFileTF1.setEnabled(false);
+
+        outputDirectoryTF1.setEnabled(false);
+
+        sequenceBTN1.setText("Choose ...");
+        sequenceBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sequenceBTN1actionPerformed(evt);
+            }
+        });
+
+        outputBTN1.setText("Select ...");
+        outputBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outputBTNactionPerformed(evt);
+            }
+        });
+
+        runBTN2.setText("Run");
+        runBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runBTN2ActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("<= Sequence <=");
+
+        startTF.setText("20");
+
+        endTF.setText("100");
+
+        jLabel13.setText("Sequence Range:");
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(27, 27, 27)
+                        .addComponent(sequenceFileTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13)
+                            .addComponent(jLabel11))
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(outputDirectoryTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGap(17, 17, 17)
+                                .addComponent(startTF, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(endTF, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(runBTN2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(outputBTN1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sequenceBTN1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(sequenceFileTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sequenceBTN1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel11)
+                    .addComponent(outputDirectoryTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outputBTN1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(startTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12)
+                    .addComponent(endTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(runBTN2))
+        );
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(287, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Distinct Sequence", jPanel8);
+
         jMenu1.setText("File");
 
         jMenuItem1.setText("About");
@@ -459,54 +707,31 @@ public class MainForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 398, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 398, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    /**
-     * This is the action listener for all the choosing files buttons
-     *
-     * @param evt
-     */
-    private void actionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionPerformed
-
-        if (evt.getSource() == reductionFileBTN || evt.getSource()
-                == positiveFileBTN || evt.getSource() == negaiveFileBTN) {
-            int returnVal = fileChooser.showDialog(this, "Choose");
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                if (evt.getSource() == reductionFileBTN) {
-                    reductionFile = fileChooser.getSelectedFile();
-                    reductionFileTF.setText(reductionFile.getName());
-                } else if (evt.getSource() == positiveFileBTN) {
-                    positiveFile = fileChooser.getSelectedFile();
-                    positiveFileTF.setText(positiveFile.getName());
-                } else if (evt.getSource() == negaiveFileBTN) {
-                    negativeFile = fileChooser.getSelectedFile();
-                    negativeFileTF.setText(negativeFile.getName());
-                }
-            } else {
-                System.out.println("closed by user");
-            }
-        }
-        if (evt.getSource() == directoryBTN) {
-            JFileChooser chooser = new JFileChooser();
-            chooser.setMultiSelectionEnabled(false);
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            
-            int returnVal = chooser.showOpenDialog(null);
-            
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                directory = chooser.getSelectedFile();
-                directoryTF.setText(directory.getPath());
-            }
-        }
-    }//GEN-LAST:event_actionPerformed
 
     private boolean validateInput() {
         if (reductionFile == null || positiveFile == null
@@ -552,6 +777,179 @@ public class MainForm extends javax.swing.JFrame {
         return true;
     }
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        JOptionPane.showMessageDialog(this,
+                "This application is developed to reduce the amino acid sequences and calcaulte NGram frequency. "
+                + "\nIt allows you to customize the parameters which include allowed characters "
+                + "\nto be used to reduce the amino acid and the value of N that is used to generate "
+                + "\nthe grams and calculate the frequency. The application will first parse the "
+                + "\ncluster's file. If the number of clusters is greater than the allowed characters, "
+                + "\nthe gram will be represented using two-letters to maximize the available letters.",
+                "About", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void runBTN2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runBTN2ActionPerformed
+        // TODO add your handling code here:
+        if (sequenceFile1 == null || DSdirectory1 == null) {
+            JOptionPane.showMessageDialog(this,
+                "Please select the sequence file and the directory for the "
+                + "output to run the program.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        String regex = "\\d+";
+        if (!startTF.getText().matches(regex) || startTF.getText().startsWith("-")) {
+            JOptionPane.showMessageDialog(this,
+                "Please enter a valid value for the start of the range", "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!endTF.getText().matches(regex) || endTF.getText().startsWith("-")) {
+            JOptionPane.showMessageDialog(this,
+                "Please enter a valid value for the end of the range", "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        DistinctSequence ds = new DistinctSequence();
+        int numberOfRemoved = ds.acceptByRange(sequenceFile1.getPath(),
+            DSdirectory1.getPath() + "/", Integer.parseInt(startTF.getText()), Integer.parseInt(endTF.getText()));
+        JOptionPane.showMessageDialog(this, numberOfRemoved + " have been removed from the sequence", "Information", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_runBTN2ActionPerformed
+
+    private void sequenceBTN1actionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sequenceBTN1actionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == sequenceBTN || evt.getSource() == sequenceBTN1) {
+            int returnVal = DSfileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == sequenceBTN) {
+                    sequenceFile = DSfileChooser.getSelectedFile();
+                    sequenceFileTF.setText(sequenceFile.getName());
+                }
+                if (evt.getSource() == sequenceBTN1) {
+                    sequenceFile1 = DSfileChooser.getSelectedFile();
+                    sequenceFileTF1.setText(sequenceFile1.getName());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        if (evt.getSource() == outputBTN || evt.getSource() == outputBTN1) {
+            int returnVal = directoryChooser.showDialog(this, "Select");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == outputBTN) {
+                    DSdirectory = directoryChooser.getSelectedFile();
+                    outputDirectoryTF.setText(DSdirectory.getAbsolutePath());
+                }
+                if (evt.getSource() == outputBTN1) {
+                    DSdirectory1 = directoryChooser.getSelectedFile();
+                    outputDirectoryTF1.setText(DSdirectory1.getAbsolutePath());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+    }//GEN-LAST:event_sequenceBTN1actionPerformed
+
+    private void runBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runBTN1ActionPerformed
+        // TODO add your handling code here:
+        if (sequenceFile == null || DSdirectory == null) {
+            JOptionPane.showMessageDialog(this,
+                "Please select the sequence file and the directory for the "
+                + "output to run the program.",
+                "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        DistinctSequence ds = new DistinctSequence();
+        int numberOfDuplicate = ds.removeDuplicate(sequenceFile.getPath(), DSdirectory.getPath() + "/");
+        JOptionPane.showMessageDialog(this, numberOfDuplicate + " have been removed from the sequence", "Information", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_runBTN1ActionPerformed
+
+    private void outputBTNactionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputBTNactionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == sequenceBTN || evt.getSource() == sequenceBTN1) {
+            int returnVal = DSfileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == sequenceBTN) {
+                    sequenceFile = DSfileChooser.getSelectedFile();
+                    sequenceFileTF.setText(sequenceFile.getName());
+                }
+                if (evt.getSource() == sequenceBTN1) {
+                    sequenceFile1 = DSfileChooser.getSelectedFile();
+                    sequenceFileTF1.setText(sequenceFile1.getName());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        /**
+         * chooser.setMultiSelectionEnabled(false);
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnVal = chooser.showOpenDialog(null);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                directory = chooser.getSelectedFile();
+                directoryTF.setText(directory.getPath());
+            }
+         */
+        if (evt.getSource() == outputBTN || evt.getSource() == outputBTN1) {
+            DSchooser.setMultiSelectionEnabled(false);
+            DSchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            
+            int returnVal = DSchooser.showDialog(this, "Select");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == outputBTN) {
+                    DSdirectory = DSchooser.getSelectedFile();
+                    outputDirectoryTF.setText(DSdirectory.getAbsolutePath());
+                }
+                if (evt.getSource() == outputBTN1) {
+                    DSdirectory1 = DSchooser.getSelectedFile();
+                    outputDirectoryTF1.setText(DSdirectory1.getAbsolutePath());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+    }//GEN-LAST:event_outputBTNactionPerformed
+
+    private void sequenceBTNactionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sequenceBTNactionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == sequenceBTN || evt.getSource() == sequenceBTN1) {
+            int returnVal = DSfileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == sequenceBTN) {
+                    sequenceFile = DSfileChooser.getSelectedFile();
+                    sequenceFileTF.setText(sequenceFile.getName());
+                }
+                if (evt.getSource() == sequenceBTN1) {
+                    sequenceFile1 = DSfileChooser.getSelectedFile();
+                    sequenceFileTF1.setText(sequenceFile1.getName());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        if (evt.getSource() == outputBTN || evt.getSource() == outputBTN1) {
+            int returnVal = directoryChooser.showDialog(this, "Select");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == outputBTN) {
+                    DSdirectory = directoryChooser.getSelectedFile();
+                    outputDirectoryTF.setText(DSdirectory.getAbsolutePath());
+                }
+                if (evt.getSource() == outputBTN1) {
+                    DSdirectory1 = directoryChooser.getSelectedFile();
+                    outputDirectoryTF1.setText(DSdirectory1.getAbsolutePath());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+    }//GEN-LAST:event_sequenceBTNactionPerformed
+
     /**
      * This is the action listener for Run button It is just generate an object
      * for NGramFrequency class, and the call the method "" to generate the
@@ -568,9 +966,9 @@ public class MainForm extends javax.swing.JFrame {
             runBTN.setEnabled(false);
             if (advanceSettings.isSelected()) {
                 NGramFrequency gram = new NGramFrequency(positiveFile.getPath(),
-                        negativeFile.getPath(), reductionFile.getPath(), 
-                        directory.getPath() + "/", allowedLetters.getText(), 
-                        Integer.parseInt(firstChunk.getText()) + Integer.parseInt(secondChunk.getText()), Integer.parseInt(firstChunk.getText()), Integer.parseInt(secondChunk.getText()), Integer.parseInt(disregard.getText()));
+                    negativeFile.getPath(), reductionFile.getPath(),
+                    directory.getPath() + "/", allowedLetters.getText(),
+                    Integer.parseInt(firstChunk.getText()) + Integer.parseInt(secondChunk.getText()), Integer.parseInt(firstChunk.getText()), Integer.parseInt(secondChunk.getText()), Integer.parseInt(disregard.getText()));
                 gram.doProcess(progressBar, jTextArea1);
                 runBTN.setEnabled(true);
             } else {
@@ -581,18 +979,6 @@ public class MainForm extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_runBTNActionPerformed
-
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-        JOptionPane.showMessageDialog(this,
-                "This application is developed to reduce the amino acid sequences and calcaulte NGram frequency. "
-                + "\nIt allows you to customize the parameters which include allowed characters "
-                + "\nto be used to reduce the amino acid and the value of N that is used to generate "
-                + "\nthe grams and calculate the frequency. The application will first parse the "
-                + "\ncluster's file. If the number of clusters is greater than the allowed characters, "
-                + "\nthe gram will be represented using two-letters to maximize the available letters.",
-                "About", JOptionPane.INFORMATION_MESSAGE);
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void advanceSettingsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_advanceSettingsStateChanged
         // TODO add your handling code here:
@@ -618,6 +1004,44 @@ public class MainForm extends javax.swing.JFrame {
             tableL.setVisible(false);
         }
     }//GEN-LAST:event_advanceSettingsStateChanged
+
+    /**
+     * This is the action listener for all the choosing files buttons
+     *
+     * @param evt
+     */
+    private void actionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actionPerformed
+
+        if (evt.getSource() == reductionFileBTN || evt.getSource()
+            == positiveFileBTN || evt.getSource() == negaiveFileBTN) {
+            int returnVal = fileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == reductionFileBTN) {
+                    reductionFile = fileChooser.getSelectedFile();
+                    reductionFileTF.setText(reductionFile.getName());
+                } else if (evt.getSource() == positiveFileBTN) {
+                    positiveFile = fileChooser.getSelectedFile();
+                    positiveFileTF.setText(positiveFile.getName());
+                } else if (evt.getSource() == negaiveFileBTN) {
+                    negativeFile = fileChooser.getSelectedFile();
+                    positiveFileTF1.setText(negativeFile.getName());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        if (evt.getSource() == directoryBTN) {
+            chooser.setMultiSelectionEnabled(false);
+            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnVal = chooser.showOpenDialog(null);
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                directory = chooser.getSelectedFile();
+                directoryTF.setText(directory.getPath());
+            }
+        }
+    }//GEN-LAST:event_actionPerformed
 
     /**
      * @param args the command line arguments
@@ -662,37 +1086,61 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField directoryTF;
     private javax.swing.JTextField disregard;
     private javax.swing.JLabel disregardL;
+    private javax.swing.JTextField endTF;
     private javax.swing.JLabel exampleL;
     private javax.swing.JTextField firstChunk;
     private javax.swing.JLabel firstchunkL;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton negaiveFileBTN;
-    private javax.swing.JTextField negativeFileTF;
+    private javax.swing.JButton outputBTN;
+    private javax.swing.JButton outputBTN1;
+    private javax.swing.JTextField outputDirectoryTF;
+    private javax.swing.JTextField outputDirectoryTF1;
     private javax.swing.JButton positiveFileBTN;
     private javax.swing.JTextField positiveFileTF;
+    private javax.swing.JTextField positiveFileTF1;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton reductionFileBTN;
     private javax.swing.JTextField reductionFileTF;
     private javax.swing.JButton runBTN;
+    private javax.swing.JButton runBTN1;
+    private javax.swing.JButton runBTN2;
     private javax.swing.JTextField secondChunk;
     private javax.swing.JLabel secondChunkL;
+    private javax.swing.JButton sequenceBTN;
+    private javax.swing.JButton sequenceBTN1;
+    private javax.swing.JTextField sequenceFileTF;
+    private javax.swing.JTextField sequenceFileTF1;
+    private javax.swing.JTextField startTF;
     private javax.swing.JLabel tableL;
     // End of variables declaration//GEN-END:variables
 }
