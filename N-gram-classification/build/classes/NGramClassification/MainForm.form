@@ -60,25 +60,21 @@
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="398" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="399" max="32767" attributes="0"/>
                   <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="398" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" max="-2" attributes="0"/>
-          </Group>
+          <Component id="jTabbedPane2" min="-2" pref="713" max="-2" attributes="0"/>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="346" max="32767" attributes="0"/>
                   <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="346" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -138,7 +134,7 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                                  <EmptySpace pref="21" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -150,29 +146,28 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="runBTN" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="339" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="337" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jPanel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanel3" min="-2" pref="246" max="-2" attributes="0"/>
+                                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="jPanel4" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                          <Component id="runBTN" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
+                          <Component id="runBTN" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -323,12 +318,11 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="directoryTF" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="directoryBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="13" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -361,14 +355,21 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Component id="advanceSettings" min="-2" pref="294" max="-2" attributes="0"/>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
+                              <Component id="chunkListL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jSeparator1" max="32767" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jSeparator1" max="32767" attributes="0"/>
+                                  </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" attributes="0">
@@ -389,25 +390,30 @@
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <Component id="exampleL" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="tableL" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="firstChunk" min="-2" pref="95" max="-2" attributes="0"/>
-                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                      <Component id="disregard" min="-2" pref="95" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <Group type="102" alignment="0" attributes="0">
-                                                      <Component id="firstchunkL" min="-2" max="-2" attributes="0"/>
-                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                      <Component id="disregardL" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                              </Group>
-                                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="secondChunkL" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="secondChunk" min="-2" pref="95" max="-2" attributes="0"/>
+                                              <Component id="jScrollPane2" min="-2" pref="214" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="removeChunkBTN" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" attributes="0">
+                                              <Component id="disregardL" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="disregardTF" min="-2" pref="65" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="takeL" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="takeTF" min="-2" pref="65" max="-2" attributes="0"/>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Component id="addChunkBTN" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="exampleL" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Component id="setChunkL" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="firstChunkL" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="firstChunkTF" min="-2" pref="76" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                       </Group>
@@ -445,15 +451,25 @@
                               <Component id="advanceSettings" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="firstchunkL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="firstChunkL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="firstChunkTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                              <Component id="setChunkL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="disregardL" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="secondChunkL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="disregardTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="takeL" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="takeTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="addChunkBTN" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="firstChunk" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="disregard" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="secondChunk" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="chunkListL" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="jScrollPane2" min="-2" pref="76" max="-2" attributes="0"/>
+                                  <Component id="removeChunkBTN" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="exampleL" min="-2" max="-2" attributes="0"/>
@@ -495,11 +511,6 @@
                     </Component>
                     <Component class="javax.swing.JSeparator" name="jSeparator1">
                     </Component>
-                    <Component class="javax.swing.JTextField" name="firstChunk">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="2"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JCheckBox" name="advanceSettings">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Advance settings"/>
@@ -507,31 +518,6 @@
                       <Events>
                         <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="advanceSettingsStateChanged"/>
                       </Events>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="firstchunkL">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="First chunk size:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="disregardL">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Disregard:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="disregard">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="1"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="secondChunkL">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Second chunk size:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="secondChunk">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="1"/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JLabel" name="tableL">
                       <Properties>
@@ -541,6 +527,78 @@
                     <Component class="javax.swing.JLabel" name="exampleL">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Example: First chunk: 2, disregard: 1, second chunk: 1"/>
+                      </Properties>
+                    </Component>
+                    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                      <AuxValues>
+                        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                      </AuxValues>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                      <SubComponents>
+                        <Component class="javax.swing.JList" name="chunkList">
+                          <Properties>
+                            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                              <StringArray count="0"/>
+                            </Property>
+                          </Properties>
+                        </Component>
+                      </SubComponents>
+                    </Container>
+                    <Component class="javax.swing.JLabel" name="firstChunkL">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="First Chuck:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="firstChunkTF">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="2"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="disregardL">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Disregard:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="disregardTF">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="1"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="takeL">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Take:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="takeTF">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="1"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="addChunkBTN">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Add"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addChunkBTNActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="setChunkL">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Set the following chucks:"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JButton" name="removeChunkBTN">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Remove"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="removeChunkBTNActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="chunkListL">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" value="Chuck List:"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -572,7 +630,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="progressBar" min="-2" pref="20" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jScrollPane1" max="32767" attributes="0"/>
+                              <Component id="jScrollPane1" pref="409" max="32767" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -645,7 +703,7 @@
                           <Component id="jPanel9" alignment="0" max="32767" attributes="0"/>
                           <Component id="jPanel10" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="287" max="32767" attributes="0"/>
+                      <EmptySpace pref="290" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

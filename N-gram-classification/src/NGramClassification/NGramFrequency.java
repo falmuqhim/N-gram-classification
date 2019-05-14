@@ -354,8 +354,9 @@ class NGramFrequency {
                 char[] toCharArray = lines.get(i).toCharArray();
                 String newProtein = "";
                 for (char c : toCharArray) {
-                    if(clusterLookupTable.containsKey("" + c))
+                    if (clusterLookupTable.containsKey("" + c)) {
                         newProtein = newProtein + clusterLookupTable.get("" + c);
+                    }
                 }
                 try {
                     if (writer != null) {
@@ -505,13 +506,13 @@ class NGramFrequency {
                     }
                 } else {
                     if (twoLetter) {
-                        for (int i = 0; i < line.length() - ((firstChunk+secondChunk+disregard) * 2) + 1; i += 2) {
+                        for (int i = 0; i < line.length() - ((firstChunk + secondChunk + disregard) * 2) + 1; i += 2) {
                             String gram1 = line.substring(i, i + (firstChunk * 2));
-                            String dis = line.substring(i + (firstChunk * 2), i + (firstChunk * 2) + (disregard*2));
-                            String gram2 = line.substring(i + (firstChunk * 2) + (disregard*2), i + (firstChunk * 2) + (disregard*2) + (secondChunk*2));
-                            
+                            String dis = line.substring(i + (firstChunk * 2), i + (firstChunk * 2) + (disregard * 2));
+                            String gram2 = line.substring(i + (firstChunk * 2) + (disregard * 2), i + (firstChunk * 2) + (disregard * 2) + (secondChunk * 2));
+
                             String gram = gram1 + gram2;
-                            
+
                             if (!possibleGrams.containsKey(gram)) {
                                 badCount++;
                             } else {
@@ -520,11 +521,11 @@ class NGramFrequency {
                             }
                         }
                     } else {
-                        for (int i = 0; i < line.length() - (firstChunk+secondChunk+disregard) + 1; i++) {
+                        for (int i = 0; i < line.length() - (firstChunk + secondChunk + disregard) + 1; i++) {
                             String gram1 = line.substring(i, i + firstChunk);
                             String dis = line.substring(i + firstChunk, i + firstChunk + disregard);
                             String gram2 = line.substring(i + firstChunk + disregard, i + firstChunk + disregard + secondChunk);
-                            
+
                             String gram = gram1 + gram2;
                             if (!possibleGrams.containsKey(gram)) {
                                 badCount++;
@@ -536,6 +537,212 @@ class NGramFrequency {
                     }
                 }
 
+                for (Map.Entry<String, Integer> entry : possibleGrams.entrySet()) {
+                    String key = entry.getKey();
+                    int value = entry.getValue();
+                    try {
+                        if (twoLetter) {
+                            writer.append(decimalFormat.format(
+                                    value / Double.valueOf((line.length() / 2) - badCount - N + 1)
+                            ));
+                            writer.append(",");
+                        } else {
+                            writer.append(decimalFormat.format(
+                                    value / Double.valueOf(line.length() - badCount - N + 1)
+                            ));
+                            writer.append(",");
+                        }
+                    } catch (IOException e) {
+                        System.err.println("Couldn't open the file for type: " + type);
+                        System.err.println(e.toString());
+                        // couldn't open the file
+                        returnCode = 3;
+                    }
+                }
+
+                if (type.equals("positive")) {
+                    try {
+                        writer.append("AMP");
+                        writer.newLine();
+                    } catch (IOException e) {
+                        System.err.println("Couldn't open the file for type: " + type);
+                        System.err.println(e.toString());
+                        // couldn't open the file
+                        returnCode = 3;
+                    }
+                }
+                if (type.equals("negative")) {
+                    try {
+                        writer.append("Non-AMP");
+                        writer.newLine();
+                    } catch (IOException e) {
+                        System.err.println("Couldn't open the file for type: " + type);
+                        System.err.println(e.toString());
+                        // couldn't open the file
+                        returnCode = 3;
+                    }
+                }
+                resetCounterForPossibleGrams();
+            }
+        }
+
+        try {
+            if (reader != null) {
+                reader.close();
+            }
+            if (writer != null) {
+                writer.flush();
+                writer.close();
+            }
+        } catch (IOException e) {
+            System.err.println(e.toString());
+        }
+        return returnCode;
+    }
+
+    /**
+     * Calculate sequence statistics for the given type (positive or negative),
+     * then save the statistics file in the desired directory This is an advance
+     * calculation which you can specify what to cary and what to leave.
+     *
+     * @param type (positive or negative)
+     * @param disregardList sizes of disregard chunks
+     * @param takeList sizes of take chunks
+     *
+     * @return (status code which are: 1 - success, 2 - can not open reduced
+     * file, 3 - can not open directory)
+     */
+    private int calculateFrequencyAdvance(String type, ArrayList<Integer> disregardList, ArrayList<Integer> takeList) {
+        int returnCode = 1;
+
+        DecimalFormat decimalFormat = new DecimalFormat("0.####");
+
+        BufferedReader reader = null;
+        BufferedWriter writer = null;
+        List<String> lines = null;
+        String relation = "";
+        try {
+
+            /*
+             * This is to open the reduced file, and open a new file to write the stats
+             * The name for the new file will be based on the name of source file and alphabetReductionFile 
+             */
+            if (type.equals("positive")) {
+                reader = new BufferedReader(new FileReader(directory + "positive_reduced.txt"));
+                relation = positiveFile.substring(positiveFile.lastIndexOf('/') + 1, positiveFile.lastIndexOf("."));
+                relation = relation + alphabetReductionFile.substring(alphabetReductionFile.lastIndexOf("/") + 1, alphabetReductionFile.lastIndexOf("."));
+                writer = new BufferedWriter(new FileWriter(directory + relation + ".csv"));
+                positiveStatisticsFile = relation + ".csv";
+            }
+            if (type.equals("negative")) {
+                reader = new BufferedReader(new FileReader(directory + "negative_reduced.txt"));
+                relation = negativeFile.substring(negativeFile.lastIndexOf('/') + 1, negativeFile.lastIndexOf("."));
+                relation = relation + alphabetReductionFile.substring(alphabetReductionFile.lastIndexOf("/") + 1, alphabetReductionFile.lastIndexOf("."));
+                writer = new BufferedWriter(new FileWriter(directory + relation + ".csv"));
+                negativeStatisticsFile = relation + ".csv";
+            }
+            if (reader != null) {
+                lines = reader.lines().collect(Collectors.toList());
+            }
+        } catch (FileNotFoundException e) {
+            System.err.println("Couldn't read the file for type: " + type);
+            System.err.println(e.toString());
+            // couldn't read the file
+            returnCode = 2;
+        } catch (IOException e) {
+            System.err.println("Couldn't open the file for type: " + type);
+            System.err.println(e.toString());
+            // couldn't open the file
+            returnCode = 3;
+        }
+        /**
+         * These lines to writer the header of the CSV file which consists of
+         * relation, and attributes
+         */
+        try {
+            if (writer != null) {
+                writer.append("@relation " + relation);
+                writer.newLine();
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Couldn't open the file for type: " + type);
+            System.err.println(e.toString());
+            // couldn't open the file
+            returnCode = 3;
+        }
+        for (Map.Entry<String, Integer> entry : possibleGrams.entrySet()) {
+            String key = entry.getKey();
+            try {
+                if (writer != null) {
+                    writer.append("@attribute " + key + " real");
+                    writer.newLine();
+                }
+            } catch (IOException e) {
+                System.err.println("Couldn't open the file for type: " + type);
+                System.err.println(e.toString());
+                // couldn't open the file
+                returnCode = 3;
+            }
+        }
+
+        try {
+            if (writer != null) {
+                writer.append("@attribute isAMP {AMP, Non-AMP}");
+                writer.newLine();
+                writer.newLine();
+                writer.append("@data");
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            System.err.println("Couldn't open the file for type: " + type);
+            System.err.println(e.toString());
+            // couldn't open the file
+            returnCode = 3;
+        }
+
+        if (lines != null) {
+            for (String line : lines) {
+                int badCount = 0;
+                int disregardSum = disregardList.stream().mapToInt(Integer::intValue).sum();
+                int takeSum = takeList.stream().mapToInt(Integer::intValue).sum();
+                if (twoLetter) {
+                    for (int i = 0; i < line.length() - ((firstChunk + takeSum + disregardSum) * 2) + 1; i += 2) {
+                        String gram = "";
+                        gram = line.substring(i, i + (firstChunk * 2));
+                        int soFar = i + firstChunk*2;
+                        for(int j=0; j<takeList.size(); j++) {
+                            String dis = line.substring(soFar, soFar + disregardList.get(j)*2);
+                            soFar+= disregardList.get(j)*2;
+                            gram += line.substring(soFar, soFar + takeList.get(j)*2);
+                            soFar += takeList.get(j)*2;
+                        }
+                        if (!possibleGrams.containsKey(gram)) {
+                            badCount++;
+                        } else {
+                            int count = possibleGrams.get(gram);
+                            possibleGrams.put(gram, count + 1);
+                        }
+                    }
+                } else {
+                    for (int i = 0; i < line.length() - (firstChunk + takeSum + disregardSum) + 1; i++) {
+                        String gram = "";
+                        gram = line.substring(i, i + firstChunk);
+                        int soFar = i + firstChunk;
+                        for(int j=0; j<takeList.size(); j++) {
+                            String dis = line.substring(soFar, soFar + disregardList.get(j));
+                            soFar+= disregardList.get(j);
+                            gram += line.substring(soFar, soFar + takeList.get(j));
+                            soFar += takeList.get(j);
+                        }
+                        if (!possibleGrams.containsKey(gram)) {
+                            badCount++;
+                        } else {
+                            int count = possibleGrams.get(gram);
+                            possibleGrams.put(gram, count + 1);
+                        }
+                    }
+                }
                 for (Map.Entry<String, Integer> entry : possibleGrams.entrySet()) {
                     String key = entry.getKey();
                     int value = entry.getValue();
@@ -724,6 +931,74 @@ class NGramFrequency {
 
         //find statistics for postive protine
         calculateFrequency("positive");
+        if (progressBar != null && outputStatus != null) {
+            progressBar.setValue((++p / all) * 100);
+            outputStatus.append("Positive file statistics have been calculated and saved in the given directory\n");
+        }
+
+        //find statistics for negative protine
+        calculateFrequency("negative");
+        if (progressBar != null && outputStatus != null) {
+            progressBar.setValue((++p / all) * 100);
+            outputStatus.append("Negative file statistics have been calculated and saved in the given directory\n");
+        }
+
+        //combine the two csv files
+        combineTwoTypes();
+        if (progressBar != null && outputStatus != null) {
+            progressBar.setValue((++p / all) * 100);
+            outputStatus.append("Two statictics files have been combined in one arff file and saved in the given directory\n");
+        }
+        return returnCode;
+    }
+    
+    /**
+     * This method is to combine all of our work in one call to make it clear
+     * for debugging. This is for the advance process
+     *
+     * @param progressBar used to output the progress of the process in GUI
+     * @param outputStatus used to output the status of the process in GUI
+     * @param disregardList sizes of disregard chunks
+     * @param takeList sizes of take chunks
+     *
+     * @return
+     */
+    public int doProcessAdvance(JProgressBar progressBar, JTextArea outputStatus, ArrayList<Integer> disregardList, ArrayList<Integer> takeList) {
+        int returnCode = 1;
+        int all = 7;
+        int p = 0;
+
+        //Assign each letter in the cluster file to one of the possible letters
+        assignEachCluster();
+        if (progressBar != null && outputStatus != null) {
+            progressBar.setValue((++p / all) * 100);
+            outputStatus.append("Each letter has been assign to a possible letter\n");
+        }
+
+        //generate possible combinations of N grams
+        generatePossibleGrams(N, possibleLetters, "");
+
+        if (progressBar != null && outputStatus != null) {
+            progressBar.setValue((++p / all) * 100);
+            outputStatus.append("Possible combinations of N Grams have been generated\n");
+        }
+
+        //reduce protine file for positive
+        reduceFile("positive");
+        if (progressBar != null && outputStatus != null) {
+            progressBar.setValue((++p / all) * 100);
+            outputStatus.append("Positive file has been reduced and saved in the given directory\n");
+        }
+
+        //reduce protine file for negative
+        reduceFile("negative");
+        if (progressBar != null && outputStatus != null) {
+            progressBar.setValue((++p / all) * 100);
+            outputStatus.append("Negative file has been reduced and saved in the given directory\n");
+        }
+
+        //find statistics for postive protine
+        calculateFrequencyAdvance("positive", disregardList, takeList);
         if (progressBar != null && outputStatus != null) {
             progressBar.setValue((++p / all) * 100);
             outputStatus.append("Positive file statistics have been calculated and saved in the given directory\n");

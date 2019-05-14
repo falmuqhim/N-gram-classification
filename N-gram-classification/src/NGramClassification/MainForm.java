@@ -2,8 +2,10 @@ package NGramClassification;
 
 import java.awt.Dimension;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -42,6 +44,10 @@ public class MainForm extends javax.swing.JFrame {
     JFileChooser chooser = new JFileChooser();
     JFileChooser DSchooser = new JFileChooser();
 
+    DefaultListModel listModel;
+    ArrayList<Integer> disregardList = new ArrayList();
+    ArrayList<Integer> takeList = new ArrayList();
+    
     /**
      * Creates new form MainForm
      */
@@ -58,14 +64,22 @@ public class MainForm extends javax.swing.JFrame {
             Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         initComponents();
+        
         disregardL.setVisible(false);
-        disregard.setVisible(false);
-        firstchunkL.setVisible(false);
-        firstChunk.setVisible(false);
-        secondChunkL.setVisible(false);
-        secondChunk.setVisible(false);
+        disregardTF.setVisible(false);
+        takeTF.setVisible(false);
+        takeL.setVisible(false);
+        chunkListL.setVisible(false);
         exampleL.setVisible(false);
         tableL.setVisible(false);
+        setChunkL.setVisible(false);
+        
+        addChunkBTN.setVisible(false);
+        firstChunkL.setVisible(false);
+        firstChunkTF.setVisible(false);
+        chunkList.setVisible(false);
+        jScrollPane2.setVisible(false);
+        removeChunkBTN.setVisible(false);
 
         progressBar.setValue(progress);
         reductionFile = null;
@@ -92,6 +106,11 @@ public class MainForm extends javax.swing.JFrame {
 
         DSfileChooser.addChoosableFileFilter(new Filter());
         DSfileChooser.setAcceptAllFileFilterUsed(false);
+        
+        listModel = new DefaultListModel();
+        
+        chunkList.setModel(listModel);
+        
     }
 
     /**
@@ -127,15 +146,21 @@ public class MainForm extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         NTF = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
-        firstChunk = new javax.swing.JTextField();
         advanceSettings = new javax.swing.JCheckBox();
-        firstchunkL = new javax.swing.JLabel();
-        disregardL = new javax.swing.JLabel();
-        disregard = new javax.swing.JTextField();
-        secondChunkL = new javax.swing.JLabel();
-        secondChunk = new javax.swing.JTextField();
         tableL = new javax.swing.JLabel();
         exampleL = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        chunkList = new javax.swing.JList();
+        firstChunkL = new javax.swing.JLabel();
+        firstChunkTF = new javax.swing.JTextField();
+        disregardL = new javax.swing.JLabel();
+        disregardTF = new javax.swing.JTextField();
+        takeL = new javax.swing.JLabel();
+        takeTF = new javax.swing.JTextField();
+        addChunkBTN = new javax.swing.JButton();
+        setChunkL = new javax.swing.JLabel();
+        removeChunkBTN = new javax.swing.JButton();
+        chunkListL = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         progressBar = new javax.swing.JProgressBar();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -277,11 +302,10 @@ public class MainForm extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(directoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(directoryBTN))
-                .addContainerGap(13, Short.MAX_VALUE))
+                    .addComponent(directoryBTN)))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Additional Parameters"));
@@ -297,8 +321,6 @@ public class MainForm extends javax.swing.JFrame {
 
         NTF.setText("3");
 
-        firstChunk.setText("2");
-
         advanceSettings.setText("Advance settings");
         advanceSettings.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -306,19 +328,41 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        firstchunkL.setText("First chunk size:");
-
-        disregardL.setText("Disregard:");
-
-        disregard.setText("1");
-
-        secondChunkL.setText("Second chunk size:");
-
-        secondChunk.setText("1");
-
         tableL.setText("<html><body> <table border=\"1\"> <tr> <td style=\"background-color:green\">B</td> <td style=\"background-color:green\">J</td>\n<td style=\"background-color:yellow\">Z</td> <td style=\"background-color:green\">B</td> <td>J</td> <td>B</td> <td>Z</td> </tr> </table> </body></html>");
 
         exampleL.setText("Example: First chunk: 2, disregard: 1, second chunk: 1");
+
+        jScrollPane2.setViewportView(chunkList);
+
+        firstChunkL.setText("First Chuck:");
+
+        firstChunkTF.setText("2");
+
+        disregardL.setText("Disregard:");
+
+        disregardTF.setText("1");
+
+        takeL.setText("Take:");
+
+        takeTF.setText("1");
+
+        addChunkBTN.setText("Add");
+        addChunkBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addChunkBTNActionPerformed(evt);
+            }
+        });
+
+        setChunkL.setText("Set the following chucks:");
+
+        removeChunkBTN.setText("Remove");
+        removeChunkBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removeChunkBTNActionPerformed(evt);
+            }
+        });
+
+        chunkListL.setText("Chuck List:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -329,8 +373,13 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(chunkListL)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator1)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator1))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -346,22 +395,28 @@ public class MainForm extends javax.swing.JFrame {
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGap(7, 7, 7)
                                         .addComponent(NTF, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(exampleL)
                             .addComponent(tableL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(firstChunk, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(disregard, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel3Layout.createSequentialGroup()
-                                        .addComponent(firstchunkL)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(disregardL)))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(secondChunkL)
-                                    .addComponent(secondChunk, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(removeChunkBTN))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(disregardL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(disregardTF, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(takeL)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(takeTF, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(addChunkBTN))
+                            .addComponent(exampleL)
+                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(setChunkL)
+                                .addGroup(jPanel3Layout.createSequentialGroup()
+                                    .addComponent(firstChunkL)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(firstChunkTF, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -387,14 +442,23 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(advanceSettings)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstchunkL)
-                    .addComponent(disregardL)
-                    .addComponent(secondChunkL))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(firstChunkL)
+                    .addComponent(firstChunkTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(11, 11, 11)
+                .addComponent(setChunkL)
+                .addGap(1, 1, 1)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(firstChunk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(disregard, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(secondChunk, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(disregardL)
+                    .addComponent(disregardTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(takeL)
+                    .addComponent(takeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(addChunkBTN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chunkListL)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(removeChunkBTN))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(exampleL)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -427,7 +491,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -455,7 +519,7 @@ public class MainForm extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(18, Short.MAX_VALUE))
+                        .addContainerGap(21, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
@@ -463,25 +527,24 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(runBTN)
-                .addGap(339, 339, 339))
+                .addGap(337, 337, 337))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(runBTN)
-                .addContainerGap())
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(runBTN))
         );
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -675,7 +738,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(287, Short.MAX_VALUE))
+                .addContainerGap(290, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -713,21 +776,18 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 398, Short.MAX_VALUE)
+                    .addGap(0, 399, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 398, Short.MAX_VALUE)))
+                    .addGap(0, 400, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 713, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGap(0, 346, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addGap(0, 346, Short.MAX_VALUE)))
         );
 
         pack();
@@ -753,21 +813,9 @@ public class MainForm extends javax.swing.JFrame {
                 }
             }
             if (advanceSettings.isSelected()) {
-                if (!firstChunk.getText().matches(regex) || firstChunk.getText().equals("0")) {
+                if (!firstChunkTF.getText().matches(regex) || firstChunkTF.getText().equals("0")) {
                     JOptionPane.showMessageDialog(this,
                             "Please enter a valid value for first chunk", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-                if (!disregard.getText().matches(regex) || disregard.getText().equals("0")) {
-                    JOptionPane.showMessageDialog(this,
-                            "Please enter a valid value for disregard", "Error",
-                            JOptionPane.ERROR_MESSAGE);
-                    return false;
-                }
-                if (!secondChunk.getText().matches(regex) || secondChunk.getText().equals("0")) {
-                    JOptionPane.showMessageDialog(this,
-                            "Please enter a valid value for the second chunk", "Error",
                             JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
@@ -965,11 +1013,11 @@ public class MainForm extends javax.swing.JFrame {
         if (validateInput()) {
             runBTN.setEnabled(false);
             if (advanceSettings.isSelected()) {
-                NGramFrequency gram = new NGramFrequency(positiveFile.getPath(),
-                    negativeFile.getPath(), reductionFile.getPath(),
-                    directory.getPath() + "/", allowedLetters.getText(),
-                    Integer.parseInt(firstChunk.getText()) + Integer.parseInt(secondChunk.getText()), Integer.parseInt(firstChunk.getText()), Integer.parseInt(secondChunk.getText()), Integer.parseInt(disregard.getText()));
-                gram.doProcess(progressBar, jTextArea1);
+                int N = Integer.parseInt(firstChunkTF.getText());
+                N += takeList.stream().mapToInt(Integer::intValue).sum();
+                
+                NGramFrequency gram = new NGramFrequency(positiveFile.getPath(), negativeFile.getPath(), reductionFile.getPath(), directory.getPath() + "/", allowedLetters.getText(), N, Integer.parseInt(firstChunkTF.getText()), 0, 0);
+                gram.doProcessAdvance(progressBar, jTextArea1, disregardList, takeList);
                 runBTN.setEnabled(true);
             } else {
                 NGramFrequency gram = new NGramFrequency(positiveFile.getPath(), negativeFile.getPath(), reductionFile.getPath(), directory.getPath() + "/", allowedLetters.getText(), Integer.parseInt(NTF.getText()), 0, 0, 0);
@@ -979,31 +1027,6 @@ public class MainForm extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_runBTNActionPerformed
-
-    private void advanceSettingsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_advanceSettingsStateChanged
-        // TODO add your handling code here:
-        if (advanceSettings.isSelected()) {
-            NTF.disable();
-            disregardL.setVisible(true);
-            disregard.setVisible(true);
-            firstchunkL.setVisible(true);
-            firstChunk.setVisible(true);
-            secondChunkL.setVisible(true);
-            secondChunk.setVisible(true);
-            exampleL.setVisible(true);
-            tableL.setVisible(true);
-        } else {
-            NTF.enable();
-            disregardL.setVisible(false);
-            disregard.setVisible(false);
-            firstchunkL.setVisible(false);
-            firstChunk.setVisible(false);
-            secondChunkL.setVisible(false);
-            secondChunk.setVisible(false);
-            exampleL.setVisible(false);
-            tableL.setVisible(false);
-        }
-    }//GEN-LAST:event_advanceSettingsStateChanged
 
     /**
      * This is the action listener for all the choosing files buttons
@@ -1043,6 +1066,76 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_actionPerformed
 
+    private void advanceSettingsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_advanceSettingsStateChanged
+        // TODO add your handling code here:
+        if (advanceSettings.isSelected()) {
+            NTF.disable();
+            disregardL.setVisible(true);
+            disregardTF.setVisible(true);
+            takeTF.setVisible(true);
+            takeL.setVisible(true);
+            chunkListL.setVisible(true);
+            exampleL.setVisible(true);
+            tableL.setVisible(true);
+            setChunkL.setVisible(true);
+            addChunkBTN.setVisible(true);
+            firstChunkL.setVisible(true);
+            firstChunkTF.setVisible(true);
+            chunkList.setVisible(true);
+            jScrollPane2.setVisible(true);
+            removeChunkBTN.setVisible(true);
+        } else {
+            NTF.enable();
+            disregardL.setVisible(false);
+            disregardTF.setVisible(false);
+            takeTF.setVisible(false);
+            takeL.setVisible(false);
+            chunkListL.setVisible(false);
+            exampleL.setVisible(false);
+            tableL.setVisible(false);
+            setChunkL.setVisible(false);
+            
+            addChunkBTN.setVisible(false);
+            firstChunkL.setVisible(false);
+            firstChunkTF.setVisible(false);
+            chunkList.setVisible(false);
+            jScrollPane2.setVisible(false);
+            removeChunkBTN.setVisible(false);
+        }
+    }//GEN-LAST:event_advanceSettingsStateChanged
+
+    private void addChunkBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addChunkBTNActionPerformed
+        // TODO add your handling code here:
+        String regex = "\\d+";
+        if (!disregardTF.getText().matches(regex) || disregardTF.getText().equals("0")) {
+            JOptionPane.showMessageDialog(this,
+                    "Please enter a valid value for Disregard", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!takeTF.getText().matches(regex) || takeTF.getText().equals("0")) {
+            JOptionPane.showMessageDialog(this,
+                    "Please enter a valid value for Take", "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        listModel.addElement("Disregard: " + disregardTF.getText() + " - Take: " + takeTF.getText());
+        disregardList.add(Integer.parseInt(disregardTF.getText()));
+        takeList.add(Integer.parseInt(takeTF.getText()));
+    }//GEN-LAST:event_addChunkBTNActionPerformed
+
+    private void removeChunkBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeChunkBTNActionPerformed
+        // TODO add your handling code here:
+        int size = listModel.getSize();
+        if (size > 0) {
+            listModel.remove(size-1);
+            disregardList.remove(size-1);
+            takeList.remove(size-1);
+        }
+        System.out.println(disregardList);
+        System.out.println(takeList);
+    }//GEN-LAST:event_removeChunkBTNActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1080,16 +1173,19 @@ public class MainForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField NTF;
+    private javax.swing.JButton addChunkBTN;
     private javax.swing.JCheckBox advanceSettings;
     private javax.swing.JTextField allowedLetters;
+    private javax.swing.JList chunkList;
+    private javax.swing.JLabel chunkListL;
     private javax.swing.JButton directoryBTN;
     private javax.swing.JTextField directoryTF;
-    private javax.swing.JTextField disregard;
     private javax.swing.JLabel disregardL;
+    private javax.swing.JTextField disregardTF;
     private javax.swing.JTextField endTF;
     private javax.swing.JLabel exampleL;
-    private javax.swing.JTextField firstChunk;
-    private javax.swing.JLabel firstchunkL;
+    private javax.swing.JLabel firstChunkL;
+    private javax.swing.JTextField firstChunkTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1116,6 +1212,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
@@ -1131,17 +1228,19 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JButton reductionFileBTN;
     private javax.swing.JTextField reductionFileTF;
+    private javax.swing.JButton removeChunkBTN;
     private javax.swing.JButton runBTN;
     private javax.swing.JButton runBTN1;
     private javax.swing.JButton runBTN2;
-    private javax.swing.JTextField secondChunk;
-    private javax.swing.JLabel secondChunkL;
     private javax.swing.JButton sequenceBTN;
     private javax.swing.JButton sequenceBTN1;
     private javax.swing.JTextField sequenceFileTF;
     private javax.swing.JTextField sequenceFileTF1;
+    private javax.swing.JLabel setChunkL;
     private javax.swing.JTextField startTF;
     private javax.swing.JLabel tableL;
+    private javax.swing.JLabel takeL;
+    private javax.swing.JTextField takeTF;
     // End of variables declaration//GEN-END:variables
 }
 
