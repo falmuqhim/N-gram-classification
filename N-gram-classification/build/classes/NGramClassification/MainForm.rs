@@ -1,2 +1,0 @@
-NGramClassification.MainForm
-NGramClassification.UppercaseDocumentFilter
