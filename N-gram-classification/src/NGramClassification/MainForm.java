@@ -819,6 +819,13 @@ public class MainForm extends javax.swing.JFrame {
                             JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
+                if (listModel.getSize() <= 0) {
+                    JOptionPane.showMessageDialog(this,
+                            "Please specify the disregard and carry for the chunks.", "Error",
+                            JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+                
             }
         }
 
@@ -1013,6 +1020,7 @@ public class MainForm extends javax.swing.JFrame {
         if (validateInput()) {
             runBTN.setEnabled(false);
             if (advanceSettings.isSelected()) {
+                
                 int N = Integer.parseInt(firstChunkTF.getText());
                 N += takeList.stream().mapToInt(Integer::intValue).sum();
                 
