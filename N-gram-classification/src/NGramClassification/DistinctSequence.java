@@ -136,7 +136,7 @@ public class DistinctSequence {
             /* 
              * Go throgh each line and accept protein in the given range.
              */
-            for (int i = 1; i < lines.size() - 1; i += 2) {
+            for (int i = 1; i < lines.size(); i += 2) {
                 if (lines.get(i).length() >= start && lines.get(i).length() <= end) {
                     try {
                         if (writer != null) {
