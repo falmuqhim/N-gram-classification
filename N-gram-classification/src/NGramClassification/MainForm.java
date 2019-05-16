@@ -36,13 +36,17 @@ public class MainForm extends javax.swing.JFrame {
     File directory;
     Integer progress = 0;
     JFileChooser DSfileChooser;
+    JFileChooser GSfileChooser;
     JFileChooser directoryChooser;
     File sequenceFile;
     File sequenceFile1;
     File DSdirectory;
     File DSdirectory1;
+    File GSFile;
+    File GSdirectory;
     JFileChooser chooser = new JFileChooser();
     JFileChooser DSchooser = new JFileChooser();
+    JFileChooser GSchooser = new JFileChooser();
 
     DefaultListModel listModel;
     ArrayList<Integer> disregardList = new ArrayList();
@@ -99,13 +103,17 @@ public class MainForm extends javax.swing.JFrame {
         DSdirectory = null;
         sequenceFile1 = null;
         DSdirectory1 = null;
-
+        GSFile = null;
         DSfileChooser = new JFileChooser();
+        GSfileChooser = new JFileChooser();
         directoryChooser = new JFileChooser();
         directoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
         DSfileChooser.addChoosableFileFilter(new Filter());
         DSfileChooser.setAcceptAllFileFilterUsed(false);
+        
+        GSfileChooser.addChoosableFileFilter(new Filter());
+        GSfileChooser.setAcceptAllFileFilterUsed(false);
         
         listModel = new DefaultListModel();
         
@@ -188,6 +196,17 @@ public class MainForm extends javax.swing.JFrame {
         startTF = new javax.swing.JTextField();
         endTF = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        gSequenceFileTF = new javax.swing.JTextField();
+        gOutputDirectoryTF = new javax.swing.JTextField();
+        sequenceBTN2 = new javax.swing.JButton();
+        outputBTN2 = new javax.swing.JButton();
+        runBTN3 = new javax.swing.JButton();
+        sequenceLengthTF = new javax.swing.JTextField();
+        jLabel17 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -734,11 +753,11 @@ public class MainForm extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(290, Short.MAX_VALUE))
+                .addGap(148, 148, 148)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -751,6 +770,108 @@ public class MainForm extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Distinct Sequence", jPanel8);
+
+        jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Generate Sequences"));
+
+        jLabel14.setText("Sequence File");
+
+        jLabel15.setText("Output Directory");
+
+        gSequenceFileTF.setEnabled(false);
+
+        gOutputDirectoryTF.setEnabled(false);
+
+        sequenceBTN2.setText("Choose ...");
+        sequenceBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sequenceBTN2actionPerformed(evt);
+            }
+        });
+
+        outputBTN2.setText("Select ...");
+        outputBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sequenceBTN2actionPerformed(evt);
+            }
+        });
+
+        runBTN3.setText("Run");
+        runBTN3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runBTN3ActionPerformed(evt);
+            }
+        });
+
+        sequenceLengthTF.setText("30");
+
+        jLabel17.setText("Sequence Length:");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel17))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addGap(4, 4, 4)
+                        .addComponent(jLabel15))
+                    .addGroup(jPanel11Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel14)))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(sequenceLengthTF, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                    .addComponent(gOutputDirectoryTF)
+                    .addComponent(gSequenceFileTF))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(runBTN3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(outputBTN2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(sequenceBTN2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel14)
+                    .addComponent(gSequenceFileTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sequenceBTN2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(gOutputDirectoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(outputBTN2))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel17)
+                    .addComponent(sequenceLengthTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(runBTN3))
+        );
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(146, 146, 146)
+                .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(158, 158, 158))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(476, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Generate Sequences", jPanel7);
 
         jMenu1.setText("File");
 
@@ -874,6 +995,54 @@ public class MainForm extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, numberOfRemoved + " have been removed from the sequence", "Information", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_runBTN2ActionPerformed
 
+    private void outputBTNactionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputBTNactionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == sequenceBTN || evt.getSource() == sequenceBTN1) {
+            int returnVal = DSfileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == sequenceBTN) {
+                    sequenceFile = DSfileChooser.getSelectedFile();
+                    sequenceFileTF.setText(sequenceFile.getName());
+                }
+                if (evt.getSource() == sequenceBTN1) {
+                    sequenceFile1 = DSfileChooser.getSelectedFile();
+                    sequenceFileTF1.setText(sequenceFile1.getName());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        /**
+        * chooser.setMultiSelectionEnabled(false);
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+        int returnVal = chooser.showOpenDialog(null);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            directory = chooser.getSelectedFile();
+            directoryTF.setText(directory.getPath());
+        }
+        */
+        if (evt.getSource() == outputBTN || evt.getSource() == outputBTN1) {
+            DSchooser.setMultiSelectionEnabled(false);
+            DSchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnVal = DSchooser.showDialog(this, "Select");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == outputBTN) {
+                    DSdirectory = DSchooser.getSelectedFile();
+                    outputDirectoryTF.setText(DSdirectory.getAbsolutePath());
+                }
+                if (evt.getSource() == outputBTN1) {
+                    DSdirectory1 = DSchooser.getSelectedFile();
+                    outputDirectoryTF1.setText(DSdirectory1.getAbsolutePath());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+    }//GEN-LAST:event_outputBTNactionPerformed
+
     private void sequenceBTN1actionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sequenceBTN1actionPerformed
         // TODO add your handling code here:
         if (evt.getSource() == sequenceBTN || evt.getSource() == sequenceBTN1) {
@@ -922,54 +1091,6 @@ public class MainForm extends javax.swing.JFrame {
         int numberOfDuplicate = ds.removeDuplicate(sequenceFile.getPath(), DSdirectory.getPath() + "/");
         JOptionPane.showMessageDialog(this, numberOfDuplicate + " have been removed from the sequence", "Information", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_runBTN1ActionPerformed
-
-    private void outputBTNactionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputBTNactionPerformed
-        // TODO add your handling code here:
-        if (evt.getSource() == sequenceBTN || evt.getSource() == sequenceBTN1) {
-            int returnVal = DSfileChooser.showDialog(this, "Choose");
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                if (evt.getSource() == sequenceBTN) {
-                    sequenceFile = DSfileChooser.getSelectedFile();
-                    sequenceFileTF.setText(sequenceFile.getName());
-                }
-                if (evt.getSource() == sequenceBTN1) {
-                    sequenceFile1 = DSfileChooser.getSelectedFile();
-                    sequenceFileTF1.setText(sequenceFile1.getName());
-                }
-            } else {
-                System.out.println("closed by user");
-            }
-        }
-        /**
-         * chooser.setMultiSelectionEnabled(false);
-            chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-
-            int returnVal = chooser.showOpenDialog(null);
-
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                directory = chooser.getSelectedFile();
-                directoryTF.setText(directory.getPath());
-            }
-         */
-        if (evt.getSource() == outputBTN || evt.getSource() == outputBTN1) {
-            DSchooser.setMultiSelectionEnabled(false);
-            DSchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            
-            int returnVal = DSchooser.showDialog(this, "Select");
-            if (returnVal == JFileChooser.APPROVE_OPTION) {
-                if (evt.getSource() == outputBTN) {
-                    DSdirectory = DSchooser.getSelectedFile();
-                    outputDirectoryTF.setText(DSdirectory.getAbsolutePath());
-                }
-                if (evt.getSource() == outputBTN1) {
-                    DSdirectory1 = DSchooser.getSelectedFile();
-                    outputDirectoryTF1.setText(DSdirectory1.getAbsolutePath());
-                }
-            } else {
-                System.out.println("closed by user");
-            }
-        }
-    }//GEN-LAST:event_outputBTNactionPerformed
 
     private void sequenceBTNactionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sequenceBTNactionPerformed
         // TODO add your handling code here:
@@ -1020,10 +1141,10 @@ public class MainForm extends javax.swing.JFrame {
         if (validateInput()) {
             runBTN.setEnabled(false);
             if (advanceSettings.isSelected()) {
-                
+
                 int N = Integer.parseInt(firstChunkTF.getText());
                 N += takeList.stream().mapToInt(Integer::intValue).sum();
-                
+
                 NGramFrequency gram = new NGramFrequency(positiveFile.getPath(), negativeFile.getPath(), reductionFile.getPath(), directory.getPath() + "/", allowedLetters.getText(), N, Integer.parseInt(firstChunkTF.getText()), 0, 0);
                 gram.doProcessAdvance(progressBar, jTextArea1, disregardList, takeList);
                 runBTN.setEnabled(true);
@@ -1035,6 +1156,76 @@ public class MainForm extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_runBTNActionPerformed
+
+    private void removeChunkBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeChunkBTNActionPerformed
+        // TODO add your handling code here:
+        int size = listModel.getSize();
+        if (size > 0) {
+            listModel.remove(size-1);
+            disregardList.remove(size-1);
+            takeList.remove(size-1);
+        }
+        System.out.println(disregardList);
+        System.out.println(takeList);
+    }//GEN-LAST:event_removeChunkBTNActionPerformed
+
+    private void addChunkBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addChunkBTNActionPerformed
+        // TODO add your handling code here:
+        String regex = "\\d+";
+        if (!disregardTF.getText().matches(regex) || disregardTF.getText().equals("0")) {
+            JOptionPane.showMessageDialog(this,
+                "Please enter a valid value for Disregard", "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!takeTF.getText().matches(regex) || takeTF.getText().equals("0")) {
+            JOptionPane.showMessageDialog(this,
+                "Please enter a valid value for Take", "Error",
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        listModel.addElement("Disregard: " + disregardTF.getText() + " - Take: " + takeTF.getText());
+        disregardList.add(Integer.parseInt(disregardTF.getText()));
+        takeList.add(Integer.parseInt(takeTF.getText()));
+    }//GEN-LAST:event_addChunkBTNActionPerformed
+
+    private void advanceSettingsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_advanceSettingsStateChanged
+        // TODO add your handling code here:
+        if (advanceSettings.isSelected()) {
+            NTF.disable();
+            disregardL.setVisible(true);
+            disregardTF.setVisible(true);
+            takeTF.setVisible(true);
+            takeL.setVisible(true);
+            chunkListL.setVisible(true);
+            exampleL.setVisible(true);
+            tableL.setVisible(true);
+            setChunkL.setVisible(true);
+            addChunkBTN.setVisible(true);
+            firstChunkL.setVisible(true);
+            firstChunkTF.setVisible(true);
+            chunkList.setVisible(true);
+            jScrollPane2.setVisible(true);
+            removeChunkBTN.setVisible(true);
+        } else {
+            NTF.enable();
+            disregardL.setVisible(false);
+            disregardTF.setVisible(false);
+            takeTF.setVisible(false);
+            takeL.setVisible(false);
+            chunkListL.setVisible(false);
+            exampleL.setVisible(false);
+            tableL.setVisible(false);
+            setChunkL.setVisible(false);
+
+            addChunkBTN.setVisible(false);
+            firstChunkL.setVisible(false);
+            firstChunkTF.setVisible(false);
+            chunkList.setVisible(false);
+            jScrollPane2.setVisible(false);
+            removeChunkBTN.setVisible(false);
+        }
+    }//GEN-LAST:event_advanceSettingsStateChanged
 
     /**
      * This is the action listener for all the choosing files buttons
@@ -1065,7 +1256,7 @@ public class MainForm extends javax.swing.JFrame {
             chooser.setMultiSelectionEnabled(false);
             chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
-            int returnVal = chooser.showOpenDialog(null);
+            int returnVal = chooser.showDialog(this, "Select");
 
             if (returnVal == JFileChooser.APPROVE_OPTION) {
                 directory = chooser.getSelectedFile();
@@ -1074,75 +1265,71 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_actionPerformed
 
-    private void advanceSettingsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_advanceSettingsStateChanged
+    private void sequenceBTN2actionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sequenceBTN2actionPerformed
         // TODO add your handling code here:
-        if (advanceSettings.isSelected()) {
-            NTF.disable();
-            disregardL.setVisible(true);
-            disregardTF.setVisible(true);
-            takeTF.setVisible(true);
-            takeL.setVisible(true);
-            chunkListL.setVisible(true);
-            exampleL.setVisible(true);
-            tableL.setVisible(true);
-            setChunkL.setVisible(true);
-            addChunkBTN.setVisible(true);
-            firstChunkL.setVisible(true);
-            firstChunkTF.setVisible(true);
-            chunkList.setVisible(true);
-            jScrollPane2.setVisible(true);
-            removeChunkBTN.setVisible(true);
+        //tap3 choose file
+        if (evt.getSource() == sequenceBTN2) {
+            int returnVal = GSfileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                GSFile = GSfileChooser.getSelectedFile();
+                gSequenceFileTF.setText(GSFile.getName());
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        if (evt.getSource() == outputBTN2) {
+            GSchooser.setMultiSelectionEnabled(false);
+            GSchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnVal = GSchooser.showDialog(this, "Select");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                GSdirectory = GSchooser.getSelectedFile();
+                gOutputDirectoryTF.setText(GSdirectory.getAbsolutePath());
+                if (evt.getSource() == outputBTN) {
+                }
+                if (evt.getSource() == outputBTN1) {
+                    DSdirectory1 = DSchooser.getSelectedFile();
+                    outputDirectoryTF1.setText(DSdirectory1.getAbsolutePath());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+    }//GEN-LAST:event_sequenceBTN2actionPerformed
+
+    private boolean validateInputGS() {
+        if (GSFile == null || GSdirectory == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Please select the sequence file and the directory for the "
+                    + "output to run the program.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
         } else {
-            NTF.enable();
-            disregardL.setVisible(false);
-            disregardTF.setVisible(false);
-            takeTF.setVisible(false);
-            takeL.setVisible(false);
-            chunkListL.setVisible(false);
-            exampleL.setVisible(false);
-            tableL.setVisible(false);
-            setChunkL.setVisible(false);
-            
-            addChunkBTN.setVisible(false);
-            firstChunkL.setVisible(false);
-            firstChunkTF.setVisible(false);
-            chunkList.setVisible(false);
-            jScrollPane2.setVisible(false);
-            removeChunkBTN.setVisible(false);
+            String regex = "\\d+";
+            if (!sequenceLengthTF.getText().matches(regex) || sequenceLengthTF.getText().equals("0")) {
+                JOptionPane.showMessageDialog(this,
+                        "Please enter a valid value for sequence length", "Error",
+                        JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
         }
-    }//GEN-LAST:event_advanceSettingsStateChanged
-
-    private void addChunkBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addChunkBTNActionPerformed
+        return true;
+    }
+    
+    private void runBTN3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runBTN3ActionPerformed
         // TODO add your handling code here:
-        String regex = "\\d+";
-        if (!disregardTF.getText().matches(regex) || disregardTF.getText().equals("0")) {
-            JOptionPane.showMessageDialog(this,
-                    "Please enter a valid value for Disregard", "Error",
-                    JOptionPane.ERROR_MESSAGE);
+        if(!validateInputGS()) {
             return;
         }
-        if (!takeTF.getText().matches(regex) || takeTF.getText().equals("0")) {
-            JOptionPane.showMessageDialog(this,
-                    "Please enter a valid value for Take", "Error",
-                    JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        listModel.addElement("Disregard: " + disregardTF.getText() + " - Take: " + takeTF.getText());
-        disregardList.add(Integer.parseInt(disregardTF.getText()));
-        takeList.add(Integer.parseInt(takeTF.getText()));
-    }//GEN-LAST:event_addChunkBTNActionPerformed
-
-    private void removeChunkBTNActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeChunkBTNActionPerformed
-        // TODO add your handling code here:
-        int size = listModel.getSize();
-        if (size > 0) {
-            listModel.remove(size-1);
-            disregardList.remove(size-1);
-            takeList.remove(size-1);
-        }
-        System.out.println(disregardList);
-        System.out.println(takeList);
-    }//GEN-LAST:event_removeChunkBTNActionPerformed
+        GenerateSequence gs = new GenerateSequence();
+        int[] result = gs.generateSequences(GSFile.getPath(),
+            GSdirectory.getPath() + "/", Integer.parseInt(sequenceLengthTF.getText()));
+        JOptionPane.showMessageDialog(this, result[0] + " have been generated "
+                + "from the sequence file\n" + result[1] + " are sequences with "
+                + "length less than the given length", "Information", JOptionPane.INFORMATION_MESSAGE);
+        
+    }//GEN-LAST:event_runBTN3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1194,11 +1381,16 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel exampleL;
     private javax.swing.JLabel firstChunkL;
     private javax.swing.JTextField firstChunkTF;
+    private javax.swing.JTextField gOutputDirectoryTF;
+    private javax.swing.JTextField gSequenceFileTF;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1212,11 +1404,13 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1228,6 +1422,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton negaiveFileBTN;
     private javax.swing.JButton outputBTN;
     private javax.swing.JButton outputBTN1;
+    private javax.swing.JButton outputBTN2;
     private javax.swing.JTextField outputDirectoryTF;
     private javax.swing.JTextField outputDirectoryTF1;
     private javax.swing.JButton positiveFileBTN;
@@ -1240,10 +1435,13 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton runBTN;
     private javax.swing.JButton runBTN1;
     private javax.swing.JButton runBTN2;
+    private javax.swing.JButton runBTN3;
     private javax.swing.JButton sequenceBTN;
     private javax.swing.JButton sequenceBTN1;
+    private javax.swing.JButton sequenceBTN2;
     private javax.swing.JTextField sequenceFileTF;
     private javax.swing.JTextField sequenceFileTF1;
+    private javax.swing.JTextField sequenceLengthTF;
     private javax.swing.JLabel setChunkL;
     private javax.swing.JTextField startTF;
     private javax.swing.JLabel tableL;

@@ -1005,7 +1005,7 @@ class NGramFrequency {
         }
 
         //find statistics for negative protine
-        calculateFrequency("negative");
+        calculateFrequencyAdvance("negative", disregardList, takeList);
         if (progressBar != null && outputStatus != null) {
             progressBar.setValue((++p / all) * 100);
             outputStatus.append("Negative file statistics have been calculated and saved in the given directory\n");
