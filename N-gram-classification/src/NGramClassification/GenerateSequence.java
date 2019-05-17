@@ -20,21 +20,20 @@ import java.util.stream.Collectors;
  * @author falmuqhim
  */
 public class GenerateSequence {
-    
+
     /**
-     * This method reads a given sequence file, and generates sequences with a 
-     * given length with the following format:
-     * For example we have: BUJJASHSGAHS, and length is 5, it divides the 
-     * sequence with length of 5 starting from index 0 and goes forward
+     * This method reads a given sequence file, and generates sequences with a
+     * given length with the following format: For example we have:
+     * BUJJASHSGAHS, and length is 5, it divides the sequence with length of 5
+     * starting from index 0 and goes forward
      *
-     * @param sequenceFile      sequence file location
-     * @param outputDirectory   directory where the generated file will be saved
-     * @param length            length of each sequence
-     * @return                  index 0 will have generated sequence number, 
-     *                          and index 1 will have how many sequences are 
-     *                          less than desired length
+     * @param sequenceFile sequence file location
+     * @param outputDirectory directory where the generated file will be saved
+     * @param length length of each sequence
+     * @return index 0 will have generated sequence number, and index 1 will
+     * have how many sequences are less than desired length
      */
-    public int[] generateSequences(String sequenceFile, String outputDirectory, int length) {
+    public int[] generateSequences(String sequenceFile, String outputDirectory, int length, boolean included) {
         BufferedReader reader = null;
         BufferedWriter writer = null;
         List<String> lines = null;
@@ -71,25 +70,40 @@ public class GenerateSequence {
             int counter = 0;
             for (int i = 1; i < lines.size(); i += 2) {
                 line = lines.get(i);
-                System.out.println("size: " + line.length());
                 counter++;
-                
+
                 //to count how many sequences are less than the desired length
-                if(line.length() < length) {
-                    lessThanLength++;
+                if (line.length() < length) {
+                    if (included) {
+                        try {
+                            if (writer != null) {
+                                writer.append(lines.get(i-1));
+                                writer.newLine();
+                                writer.append(lines.get(i));
+                                writer.newLine();
+                                sequenceCount++;
+                            }
+                        } catch (IOException e) {
+                            System.err.println("Couldn't open the file in directory: " + outputDirectory);
+                            System.err.println(e.toString());
+                            // couldn't open the file
+                        }
+                    } else {
+                        lessThanLength++;
+                    }
                     continue;
                 }
-                for(int j=0; j<=(line.length()-length); j++) {
-                    
+                for (int j = 0; j <= (line.length() - length); j++) {
+
                     try {
                         if (writer != null) {
                             /*
                             * naming sequences based on the sequence number in 
                             * the file, and the starting and ending points
-                            */
-                            writer.append(">" + (counter) + "." + (j+1) + "." + (j+length));
+                             */
+                            writer.append(">" + (counter) + "." + (j + 1) + "." + (j + length));
                             writer.newLine();
-                            writer.append(line.substring(j, j+length));
+                            writer.append(line.substring(j, j + length));
                             writer.newLine();
                             sequenceCount++;
                         }
