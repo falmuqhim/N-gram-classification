@@ -60,9 +60,9 @@
           </Group>
           <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="399" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="482" max="32767" attributes="0"/>
                   <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="482" max="32767" attributes="0"/>
               </Group>
           </Group>
       </Group>
@@ -134,7 +134,7 @@
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="21" max="32767" attributes="0"/>
+                                  <EmptySpace pref="186" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -163,7 +163,7 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jPanel3" min="-2" pref="385" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -697,13 +697,13 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="148" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="166" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jPanel10" min="-2" max="-2" attributes="0"/>
                           <Component id="jPanel9" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="156" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -738,15 +738,15 @@
                               <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="sequenceFileTF" alignment="0" pref="217" max="32767" attributes="0"/>
-                              <Component id="outputDirectoryTF" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="outputBTN" alignment="0" max="32767" attributes="0"/>
-                              <Component id="sequenceBTN" alignment="0" max="32767" attributes="0"/>
-                              <Component id="runBTN1" alignment="1" max="32767" attributes="0"/>
+                              <Component id="sequenceFileTF" pref="385" max="32767" attributes="0"/>
+                              <Component id="outputDirectoryTF" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="runBTN1" max="32767" attributes="0"/>
+                              <Component id="outputBTN" alignment="1" max="32767" attributes="0"/>
+                              <Component id="sequenceBTN" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -838,34 +838,32 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
-                                  <Component id="sequenceFileTF1" min="-2" pref="217" max="-2" attributes="0"/>
+                                  <Component id="sequenceFileTF1" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jLabel13" alignment="1" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel11" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="outputDirectoryTF1" min="-2" pref="217" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
                                           <Component id="startTF" min="-2" pref="53" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="endTF" min="-2" pref="52" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="143" max="32767" attributes="0"/>
                                       </Group>
+                                      <Component id="outputDirectoryTF1" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace pref="11" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="runBTN2" alignment="0" max="32767" attributes="0"/>
                               <Component id="outputBTN1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="sequenceBTN1" alignment="0" max="32767" attributes="0"/>
+                              <Component id="sequenceBTN1" alignment="1" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -980,10 +978,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-                      <Component id="jPanel11" max="32767" attributes="0"/>
-                      <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace pref="162" max="32767" attributes="0"/>
+                      <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -991,8 +989,8 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel11" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="476" max="32767" attributes="0"/>
+                      <Component id="jPanel11" min="-2" pref="213" max="-2" attributes="0"/>
+                      <EmptySpace pref="448" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -1010,32 +1008,47 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="jLabel17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="jLabel15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="gSequenceFileTF" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <EmptySpace min="134" pref="134" max="-2" attributes="0"/>
+                                                  <Group type="103" groupAlignment="0" attributes="0">
+                                                      <Component id="gOutputDirectoryTF" max="32767" attributes="0"/>
+                                                      <Component id="sequenceLengthTF" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="0" pref="142" max="32767" attributes="0"/>
+                                          <Component id="included" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="outputBTN2" max="32767" attributes="0"/>
+                                      <Component id="sequenceBTN2" max="32767" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
-                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <Component id="runBTN3" min="-2" pref="107" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="sequenceLengthTF" pref="200" max="32767" attributes="0"/>
-                              <Component id="gOutputDirectoryTF" max="32767" attributes="0"/>
-                              <Component id="gSequenceFileTF" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="24" max="32767" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="runBTN3" alignment="0" max="32767" attributes="0"/>
-                              <Component id="outputBTN2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="sequenceBTN2" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -1050,19 +1063,22 @@
                               <Component id="gSequenceFileTF" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="sequenceBTN2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="gOutputDirectoryTF" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="outputBTN2" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="sequenceLengthTF" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="included" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="2" max="-2" attributes="0"/>
                           <Component id="runBTN3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1120,6 +1136,11 @@
                 <Component class="javax.swing.JLabel" name="jLabel17">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Sequence Length:"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JCheckBox" name="included">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Include sequences that are less than the given length"/>
                   </Properties>
                 </Component>
               </SubComponents>
