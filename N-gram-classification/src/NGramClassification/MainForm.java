@@ -44,7 +44,14 @@ public class MainForm extends javax.swing.JFrame {
     File DSdirectory1;
     File GSFile;
     File GSdirectory;
+    File cDirectory;
+    File cDirectory1;
+    File controlPositiveFile;
+    File controlNegativeFile;
+    File controlSequenceFile;
     JFileChooser chooser = new JFileChooser();
+    JFileChooser cDirectoryChooser = new JFileChooser();
+    JFileChooser cDirectoryChooser1 = new JFileChooser();
     JFileChooser DSchooser = new JFileChooser();
     JFileChooser GSchooser = new JFileChooser();
 
@@ -90,7 +97,10 @@ public class MainForm extends javax.swing.JFrame {
         positiveFile = null;
         negativeFile = null;
         directory = null;
-
+        controlPositiveFile = null;
+        controlNegativeFile = null;
+        controlNegativeFile = null;
+        
         fileChooser = new JFileChooser();
 
         fileChooser.addChoosableFileFilter(new Filter());
@@ -106,6 +116,7 @@ public class MainForm extends javax.swing.JFrame {
         GSFile = null;
         DSfileChooser = new JFileChooser();
         GSfileChooser = new JFileChooser();
+        
         directoryChooser = new JFileChooser();
         directoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
@@ -208,6 +219,26 @@ public class MainForm extends javax.swing.JFrame {
         sequenceLengthTF = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         included = new javax.swing.JCheckBox();
+        jPanel12 = new javax.swing.JPanel();
+        jPanel14 = new javax.swing.JPanel();
+        controlPositiveFileTF = new javax.swing.JTextField();
+        controlPositiveFileBTN = new javax.swing.JButton();
+        controlNegaiveFileBTN = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        controlNegativeFileTF = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        cOutputDirectoryTF = new javax.swing.JTextField();
+        cOutputBTN = new javax.swing.JButton();
+        outputBTN5 = new javax.swing.JButton();
+        jPanel15 = new javax.swing.JPanel();
+        controlSequenceFileTF = new javax.swing.JTextField();
+        controlSequenceFileBTN = new javax.swing.JButton();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        cOutputDirectoryTF1 = new javax.swing.JTextField();
+        cOutputBTN1 = new javax.swing.JButton();
+        outputBTN6 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -887,6 +918,192 @@ public class MainForm extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Generate Sequences", jPanel7);
 
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder("Control from two files"));
+
+        controlPositiveFileTF.setEnabled(false);
+
+        controlPositiveFileBTN.setText("Choose ...");
+        controlPositiveFileBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlSelectActionPerformed(evt);
+            }
+        });
+
+        controlNegaiveFileBTN.setText("Choose ...");
+        controlNegaiveFileBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlSelectActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("Positive File");
+
+        jLabel22.setText("Negative File");
+
+        controlNegativeFileTF.setEnabled(false);
+
+        jLabel20.setText("Output Directory");
+
+        cOutputDirectoryTF.setEnabled(false);
+
+        cOutputBTN.setText("Select ...");
+        cOutputBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlSelectActionPerformed(evt);
+            }
+        });
+
+        outputBTN5.setText("Run");
+        outputBTN5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outputBTN5sequenceBTN2actionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
+        jPanel14.setLayout(jPanel14Layout);
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel21))
+                .addGap(22, 22, 22)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(controlPositiveFileTF, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                    .addComponent(controlNegativeFileTF)
+                    .addComponent(cOutputDirectoryTF))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(controlNegaiveFileBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(controlPositiveFileBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cOutputBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(outputBTN5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
+        );
+        jPanel14Layout.setVerticalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(controlPositiveFileTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(controlPositiveFileBTN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel22)
+                    .addComponent(controlNegativeFileTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(controlNegaiveFileBTN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel20)
+                    .addComponent(cOutputDirectoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cOutputBTN))
+                .addGap(18, 18, 18)
+                .addComponent(outputBTN5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder("Control from one file"));
+
+        controlSequenceFileTF.setEnabled(false);
+
+        controlSequenceFileBTN.setText("Choose ...");
+        controlSequenceFileBTN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlSequenceFileBTNcontrolSelectActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setText("Sequence File");
+
+        jLabel25.setText("Output Directory");
+
+        cOutputDirectoryTF1.setEnabled(false);
+
+        cOutputBTN1.setText("Select ...");
+        cOutputBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                controlSequenceFileBTNcontrolSelectActionPerformed(evt);
+            }
+        });
+
+        outputBTN6.setText("Run");
+        outputBTN6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                outputBTN6sequenceBTN2actionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(outputBTN6, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel15Layout.createSequentialGroup()
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel25))
+                        .addGap(22, 22, 22)
+                        .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addComponent(controlSequenceFileTF, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(controlSequenceFileBTN))
+                            .addGroup(jPanel15Layout.createSequentialGroup()
+                                .addComponent(cOutputDirectoryTF1)
+                                .addGap(18, 18, 18)
+                                .addComponent(cOutputBTN1, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(20, 20, 20))
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(2, 2, 2)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel23)
+                    .addComponent(controlSequenceFileTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(controlSequenceFileBTN))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel25)
+                    .addComponent(cOutputDirectoryTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cOutputBTN1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(outputBTN6)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap(163, Short.MAX_VALUE)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(147, 147, 147))
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel12Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel15, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(346, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Control", jPanel12);
+
         jMenu1.setText("File");
 
         jMenuItem1.setText("About");
@@ -1037,6 +1254,7 @@ public class MainForm extends javax.swing.JFrame {
             directoryTF.setText(directory.getPath());
         }
         */
+        
         if (evt.getSource() == outputBTN || evt.getSource() == outputBTN1) {
             DSchooser.setMultiSelectionEnabled(false);
             DSchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -1345,6 +1563,95 @@ public class MainForm extends javax.swing.JFrame {
         
     }//GEN-LAST:event_runBTN3ActionPerformed
 
+    
+    private void outputBTN5sequenceBTN2actionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputBTN5sequenceBTN2actionPerformed
+        // TODO add your handling code here:
+        if (controlPositiveFile == null || controlNegativeFile == null || cDirectory == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Please select the sequence files and the directory for the "
+                    + "output to run the program.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Control control = new Control();
+        int size = control.doControl(controlPositiveFile.getPath(), controlNegativeFile.getPath(), cDirectory.getPath() + "/");
+        JOptionPane.showMessageDialog(this, size + " have been shuffled and divided into two files (poitive and negative)"
+                , "Information", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_outputBTN5sequenceBTN2actionPerformed
+
+    private void controlSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_controlSelectActionPerformed
+        
+        if (evt.getSource() == controlPositiveFileBTN || evt.getSource()
+            == controlNegaiveFileBTN) {
+            int returnVal = fileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                if (evt.getSource() == controlPositiveFileBTN) {
+                    controlPositiveFile = fileChooser.getSelectedFile();
+                    controlPositiveFileTF.setText(controlPositiveFile.getName());
+                } else if (evt.getSource() == controlNegaiveFileBTN) {
+                    controlNegativeFile = fileChooser.getSelectedFile();
+                    controlNegativeFileTF.setText(controlNegativeFile.getName());
+                }
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        if (evt.getSource() == cOutputBTN) {
+            
+            cDirectoryChooser.setMultiSelectionEnabled(false);
+            cDirectoryChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnVal = cDirectoryChooser.showDialog(this, "Select");
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                cDirectory = cDirectoryChooser.getSelectedFile();
+                cOutputDirectoryTF.setText(cDirectory.getPath());
+            }
+        }
+    }//GEN-LAST:event_controlSelectActionPerformed
+
+    private void controlSequenceFileBTNcontrolSelectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_controlSequenceFileBTNcontrolSelectActionPerformed
+        // TODO add your handling code here:
+        if (evt.getSource() == controlSequenceFileBTN) {
+            int returnVal = fileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                controlSequenceFile = fileChooser.getSelectedFile();
+                controlSequenceFileTF.setText(controlSequenceFile.getName());
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        if (evt.getSource() == cOutputBTN1) {
+            
+            cDirectoryChooser1.setMultiSelectionEnabled(false);
+            cDirectoryChooser1.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnVal = cDirectoryChooser1.showDialog(this, "Select");
+
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                cDirectory1 = cDirectoryChooser1.getSelectedFile();
+                cOutputDirectoryTF1.setText(cDirectory1.getPath());
+            }
+        }
+    }//GEN-LAST:event_controlSequenceFileBTNcontrolSelectActionPerformed
+
+    private void outputBTN6sequenceBTN2actionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_outputBTN6sequenceBTN2actionPerformed
+        // TODO add your handling code here:
+        if (controlSequenceFile == null || cDirectory1 == null) {
+            JOptionPane.showMessageDialog(this,
+                    "Please select the sequence file and the directory for the "
+                    + "output to run the program.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        Control control = new Control();
+        int size = control.doControlOneFile(controlSequenceFile.getPath(), cDirectory1.getPath() + "/");
+        JOptionPane.showMessageDialog(this, size + " have been shuffled and put back to the generated file"
+                , "Information", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_outputBTN6sequenceBTN2actionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1385,8 +1692,18 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton addChunkBTN;
     private javax.swing.JCheckBox advanceSettings;
     private javax.swing.JTextField allowedLetters;
+    private javax.swing.JButton cOutputBTN;
+    private javax.swing.JButton cOutputBTN1;
+    private javax.swing.JTextField cOutputDirectoryTF;
+    private javax.swing.JTextField cOutputDirectoryTF1;
     private javax.swing.JList chunkList;
     private javax.swing.JLabel chunkListL;
+    private javax.swing.JButton controlNegaiveFileBTN;
+    private javax.swing.JTextField controlNegativeFileTF;
+    private javax.swing.JButton controlPositiveFileBTN;
+    private javax.swing.JTextField controlPositiveFileTF;
+    private javax.swing.JButton controlSequenceFileBTN;
+    private javax.swing.JTextField controlSequenceFileTF;
     private javax.swing.JButton directoryBTN;
     private javax.swing.JTextField directoryTF;
     private javax.swing.JLabel disregardL;
@@ -1407,6 +1724,11 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1420,6 +1742,9 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel14;
+    private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1438,6 +1763,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton outputBTN;
     private javax.swing.JButton outputBTN1;
     private javax.swing.JButton outputBTN2;
+    private javax.swing.JButton outputBTN5;
+    private javax.swing.JButton outputBTN6;
     private javax.swing.JTextField outputDirectoryTF;
     private javax.swing.JTextField outputDirectoryTF1;
     private javax.swing.JButton positiveFileBTN;
