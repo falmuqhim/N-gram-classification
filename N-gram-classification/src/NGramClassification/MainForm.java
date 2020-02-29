@@ -43,6 +43,7 @@ public class MainForm extends javax.swing.JFrame {
     File DSdirectory;
     File DSdirectory1;
     File GSFile;
+    Filter filter1;
     File GSdirectory;
     File cDirectory;
     File cDirectory1;
@@ -123,7 +124,8 @@ public class MainForm extends javax.swing.JFrame {
         DSfileChooser.addChoosableFileFilter(new Filter());
         DSfileChooser.setAcceptAllFileFilterUsed(false);
         
-        GSfileChooser.addChoosableFileFilter(new Filter());
+        filter1 = new Filter();
+        GSfileChooser.addChoosableFileFilter(filter1);
         GSfileChooser.setAcceptAllFileFilterUsed(false);
         
         listModel = new DefaultListModel();
@@ -248,6 +250,21 @@ public class MainForm extends javax.swing.JFrame {
         statsSequenceBTN = new javax.swing.JButton();
         statsOutputBTN = new javax.swing.JButton();
         runBTN4 = new javax.swing.JButton();
+        jPanel17 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        gStatsFileTF1 = new javax.swing.JTextField();
+        gOutputStatsDirectoryTF1 = new javax.swing.JTextField();
+        statsSequenceBTN1 = new javax.swing.JButton();
+        statsOutputBTN1 = new javax.swing.JButton();
+        runBTN5 = new javax.swing.JButton();
+        jLabel26 = new javax.swing.JLabel();
+        gStatsFileTF2 = new javax.swing.JTextField();
+        statsSequenceBTN2 = new javax.swing.JButton();
+        jLabel27 = new javax.swing.JLabel();
+        gStatsFileTF3 = new javax.swing.JTextField();
+        statsSequenceBTN3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -579,7 +596,7 @@ public class MainForm extends javax.swing.JFrame {
                             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(186, Short.MAX_VALUE))
+                        .addContainerGap(216, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel1)
@@ -793,7 +810,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addContainerGap(166, Short.MAX_VALUE)
+                .addContainerGap(196, Short.MAX_VALUE)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -913,7 +930,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
+                .addContainerGap(192, Short.MAX_VALUE)
                 .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(150, 150, 150))
         );
@@ -1095,7 +1112,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel12Layout.setHorizontalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel12Layout.createSequentialGroup()
-                .addContainerGap(163, Short.MAX_VALUE)
+                .addContainerGap(193, Short.MAX_VALUE)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel14, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jPanel15, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1194,7 +1211,7 @@ public class MainForm extends javax.swing.JFrame {
         jPanel13Layout.setHorizontalGroup(
             jPanel13Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
-                .addContainerGap(162, Short.MAX_VALUE)
+                .addContainerGap(192, Short.MAX_VALUE)
                 .addComponent(jPanel16, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(150, 150, 150))
         );
@@ -1207,6 +1224,144 @@ public class MainForm extends javax.swing.JFrame {
         );
 
         jTabbedPane2.addTab("Generate Stats", jPanel13);
+
+        jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Matching"));
+
+        jLabel19.setText("Original Sequence File");
+
+        jLabel24.setText("Output Directory");
+
+        gStatsFileTF1.setEnabled(false);
+
+        gOutputStatsDirectoryTF1.setEnabled(false);
+
+        statsSequenceBTN1.setText("Choose ...");
+        statsSequenceBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statsSequenceBTN1ActionPerformed(evt);
+            }
+        });
+
+        statsOutputBTN1.setText("Select ...");
+        statsOutputBTN1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statsSequenceBTN1ActionPerformed(evt);
+            }
+        });
+
+        runBTN5.setText("Run");
+        runBTN5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                runBTN5ActionPerformed(evt);
+            }
+        });
+
+        jLabel26.setText("Divided Sequence File");
+
+        gStatsFileTF2.setEnabled(false);
+
+        statsSequenceBTN2.setText("Choose ...");
+        statsSequenceBTN2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statsSequenceBTN1ActionPerformed(evt);
+            }
+        });
+
+        jLabel27.setText("Predicted Sequence File");
+
+        gStatsFileTF3.setEnabled(false);
+
+        statsSequenceBTN3.setText("Choose ...");
+        statsSequenceBTN3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                statsSequenceBTN1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(runBTN5, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel26))
+                                .addGap(21, 21, 21)
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(gStatsFileTF2, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
+                                    .addComponent(gStatsFileTF1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(statsSequenceBTN1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                    .addComponent(statsSequenceBTN2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel27)
+                                    .addComponent(jLabel24))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(gStatsFileTF3, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(gOutputStatsDirectoryTF1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(39, 39, 39)
+                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(statsSequenceBTN3, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                    .addComponent(statsOutputBTN1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))))
+                .addContainerGap())
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel18Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19)
+                    .addComponent(gStatsFileTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statsSequenceBTN1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel26)
+                    .addComponent(gStatsFileTF2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statsSequenceBTN2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(gStatsFileTF3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(statsSequenceBTN3))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(statsOutputBTN1)
+                    .addComponent(gOutputStatsDirectoryTF1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24))
+                .addGap(32, 32, 32)
+                .addComponent(runBTN5)
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel17Layout.createSequentialGroup()
+                .addContainerGap(119, Short.MAX_VALUE)
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(150, 150, 150))
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel17Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel18, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(399, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Matching", jPanel17);
 
         jMenu1.setText("File");
 
@@ -1232,9 +1387,9 @@ public class MainForm extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 482, Short.MAX_VALUE)
+                    .addGap(0, 497, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 482, Short.MAX_VALUE)))
+                    .addGap(0, 497, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1807,6 +1962,79 @@ public class MainForm extends javax.swing.JFrame {
                 + "from the sequence file", "Information", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_runBTN4ActionPerformed
 
+    private boolean validateInputMatching() {
+        if (gStatsFileTF1.getText().equals("") || gStatsFileTF2.getText().equals("")
+                || gStatsFileTF3.getText().equals("") || gOutputStatsDirectoryTF1.getText().equals("")) {
+            JOptionPane.showMessageDialog(this,
+                    "Please select the input files and the directory for the "
+                    + "output to run the program.",
+                    "Error",
+                    JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
+        return true;
+    }
+    private void runBTN5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_runBTN5ActionPerformed
+        // TODO add your handling code here:
+        if(!validateInputMatching()) {
+            return;
+        }
+        MatchingSequence matching = new MatchingSequence();
+        System.out.println(gStatsFileTF1.getText());
+        System.out.println(gStatsFileTF2.getText());
+        System.out.println(gStatsFileTF3.getText());
+        System.out.println(gOutputStatsDirectoryTF1.getText());
+        int result = matching.generateMatchingFile(gStatsFileTF1.getText(), gStatsFileTF2.getText(), gStatsFileTF3.getText(), gOutputStatsDirectoryTF1.getText() +"/");
+//        int[] result = gs.generateSequences(GSFile.getPath(),
+//            GSdirectory.getPath() + "/", Integer.parseInt(sequenceLengthTF.getText()), included.isSelected());
+        JOptionPane.showMessageDialog(this, "The file has been generated in the given directory", "Information", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_runBTN5ActionPerformed
+
+    private void statsSequenceBTN1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_statsSequenceBTN1ActionPerformed
+        // TODO add your handling code here:
+        GSfileChooser.addChoosableFileFilter(filter1);
+        if (evt.getSource() == statsSequenceBTN1) {
+            int returnVal = GSfileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                GSFile = GSfileChooser.getSelectedFile();
+                gStatsFileTF1.setText(GSFile.getPath());
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        if (evt.getSource() == statsSequenceBTN2) {
+            int returnVal = GSfileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                GSFile = GSfileChooser.getSelectedFile();
+                gStatsFileTF2.setText(GSFile.getPath());
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        if (evt.getSource() == statsSequenceBTN3) {
+            GSfileChooser.removeChoosableFileFilter(filter1);
+            int returnVal = GSfileChooser.showDialog(this, "Choose");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                GSFile = GSfileChooser.getSelectedFile();
+                gStatsFileTF3.setText(GSFile.getPath());
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+        if (evt.getSource() == statsOutputBTN1) {
+            GSchooser.setMultiSelectionEnabled(false);
+            GSchooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+
+            int returnVal = GSchooser.showDialog(this, "Select");
+            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                GSdirectory = GSchooser.getSelectedFile();
+                gOutputStatsDirectoryTF1.setText(GSdirectory.getAbsolutePath());
+            } else {
+                System.out.println("closed by user");
+            }
+        }
+    }//GEN-LAST:event_statsSequenceBTN1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -1869,8 +2097,12 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField firstChunkTF;
     private javax.swing.JTextField gOutputDirectoryTF;
     private javax.swing.JTextField gOutputStatsDirectoryTF;
+    private javax.swing.JTextField gOutputStatsDirectoryTF1;
     private javax.swing.JTextField gSequenceFileTF;
     private javax.swing.JTextField gStatsFileTF;
+    private javax.swing.JTextField gStatsFileTF1;
+    private javax.swing.JTextField gStatsFileTF2;
+    private javax.swing.JTextField gStatsFileTF3;
     private javax.swing.JCheckBox included;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -1882,12 +2114,16 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1906,6 +2142,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
+    private javax.swing.JPanel jPanel17;
+    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1940,6 +2178,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton runBTN2;
     private javax.swing.JButton runBTN3;
     private javax.swing.JButton runBTN4;
+    private javax.swing.JButton runBTN5;
     private javax.swing.JButton sequenceBTN;
     private javax.swing.JButton sequenceBTN1;
     private javax.swing.JButton sequenceBTN2;
@@ -1949,7 +2188,11 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel setChunkL;
     private javax.swing.JTextField startTF;
     private javax.swing.JButton statsOutputBTN;
+    private javax.swing.JButton statsOutputBTN1;
     private javax.swing.JButton statsSequenceBTN;
+    private javax.swing.JButton statsSequenceBTN1;
+    private javax.swing.JButton statsSequenceBTN2;
+    private javax.swing.JButton statsSequenceBTN3;
     private javax.swing.JLabel tableL;
     private javax.swing.JLabel takeL;
     private javax.swing.JTextField takeTF;
