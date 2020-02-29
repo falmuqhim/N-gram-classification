@@ -73,11 +73,12 @@ public class GenerateSequence {
                 counter++;
 
                 //to count how many sequences are less than the desired length
-                if (line.length() < length) {
+                if (line.length() <= length) {
                     if (included) {
                         try {
                             if (writer != null) {
-                                writer.append(lines.get(i-1));
+                                writer.append(">" + (counter) + "." + 1 + "." + line.length() + "@" + lines.get(i-1));
+//                                writer.append(lines.get(i-1));
                                 writer.newLine();
                                 writer.append(lines.get(i));
                                 writer.newLine();
@@ -88,9 +89,8 @@ public class GenerateSequence {
                             System.err.println(e.toString());
                             // couldn't open the file
                         }
-                    } else {
-                        lessThanLength++;
                     }
+                    lessThanLength++;
                     continue;
                 }
                 for (int j = 0; j <= (line.length() - length); j++) {
@@ -101,7 +101,7 @@ public class GenerateSequence {
                             * naming sequences based on the sequence number in 
                             * the file, and the starting and ending points
                              */
-                            writer.append(">" + (counter) + "." + (j + 1) + "." + (j + length));
+                            writer.append(">" + (counter) + "." + (j + 1) + "." + (j + length) + "@" + lines.get(i-1));
                             writer.newLine();
                             writer.append(line.substring(j, j + length));
                             writer.newLine();
